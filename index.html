@@ -204,7 +204,21 @@ let form = blank();
 let selectedColors = [], selectedSizes = [];
 
 function blank() {
-  return { name:'', category:'Shirting', subcategory:'Linen', brand:'Libas', price:'', stock:'', sizes:[], is_new:false, description:'', image_url:'', image_urls:[] };
+  return { name:'', category:'Shirting', subcategory:'Linen', brand:'Libas', price:'', stock:'', sizes:[], is_new:false, description:'', image_url:'', image_urls:[], product_no:'' };
+}
+
+// ── GENERATE PRODUCT NUMBER ──
+// Format: LIB-0001, LIB-0002 ... auto-increments from highest existing
+async function generateProductNo() {
+  try {
+    const { data, error } = await sb.from('products').select('product_no').order('created_at', { ascending: false });
+    if (error) return 'LIB-0001';
+    const nums = (data || [])
+      .map(p => { const m = (p.product_no||'').match(/(\d+)$/); return m ? parseInt(m[1]) : 0; })
+      .filter(n => n > 0);
+    const next = nums.length > 0 ? Math.max(...nums) + 1 : 1;
+    return 'LIB-' + String(next).padStart(4, '0');
+  } catch { return 'LIB-0001'; }
 }
 
 // ── INIT ──
@@ -268,6 +282,7 @@ function renderSetup() {
 CREATE TABLE IF NOT EXISTS products (
   id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
   name text NOT NULL,
+  product_no text,
   category text,
   subcategory text,
   brand text,
@@ -281,12 +296,11 @@ CREATE TABLE IF NOT EXISTS products (
   created_at timestamptz DEFAULT now()
 );
 
--- DISABLE Row Level Security (allows anon key to insert/update/delete)
-ALTER TABLE products DISABLE ROW LEVEL SECURITY;
+-- Add product_no column if table already exists (safe to run multiple times)
+ALTER TABLE products ADD COLUMN IF NOT EXISTS product_no text;
 
--- OR if you want RLS enabled, add a permissive policy instead:
--- ALTER TABLE products ENABLE ROW LEVEL SECURITY;
--- CREATE POLICY "allow_all" ON products FOR ALL USING (true) WITH CHECK (true);</pre>
+-- DISABLE Row Level Security (allows anon key to insert/update/delete)
+ALTER TABLE products DISABLE ROW LEVEL SECURITY;</pre>
     </div>
   </div>
 
@@ -496,7 +510,7 @@ function renderProducts() {
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th>Image</th><th>Product Name</th><th>Category</th><th>Type</th><th>Brand</th>
+        <th>#No</th><th>Image</th><th>Product Name</th><th>Category</th><th>Type</th><th>Brand</th>
         <th>Price (₹)</th><th>New?</th><th>Stock</th><th>Actions</th>
       </tr></thead>
       <tbody id="productTableBody"></tbody>
@@ -509,13 +523,16 @@ function renderTable(list) {
   const body = document.getElementById('productTableBody');
   if (!body) return;
   if (list.length === 0) {
-    body.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:60px;color:rgba(255,255,255,.3)"><div style="font-size:40px;margin-bottom:12px">📦</div><p class="cinzel">No products found</p></td></tr>`;
+    body.innerHTML = `<tr><td colspan="10" style="text-align:center;padding:60px;color:rgba(255,255,255,.3)"><div style="font-size:40px;margin-bottom:12px">📦</div><p class="cinzel">No products found</p></td></tr>`;
     return;
   }
   body.innerHTML = list.map(p => {
     const sizes  = parseArr(p.sizes);
     return `
     <tr data-pid="${p.id}">
+      <td>
+        <span class="cinzel" style="font-size:11px;font-weight:700;color:#D4AF37;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.25);padding:3px 8px;border-radius:4px;white-space:nowrap;letter-spacing:.5px">${p.product_no||'—'}</span>
+      </td>
       <td>
         <div style="width:44px;height:44px;border-radius:6px;overflow:hidden;background:rgba(59,7,100,.5);display:flex;align-items:center;justify-content:center;font-size:18px">
           ${p.image_url ? `<img src="${p.image_url}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='🧵'"/>` : '🧵'}
@@ -526,7 +543,6 @@ function renderTable(list) {
       <td style="color:rgba(255,255,255,.5);font-size:12px">${p.subcategory||''}</td>
       <td class="cinzel" style="color:#C9A020;font-size:11px">${p.brand||''}</td>
       <td class="cinzel" style="font-weight:700;color:#a78bfa">₹${Number(p.price).toFixed(0)}</td>
-
       <td>${p.is_new?'<span class="tag-new">New</span>':'<span style="color:rgba(255,255,255,.3)">—</span>'}</td>
       <td style="text-align:center"><span style="color:${Number(p.stock)<10?'#f87171':'rgba(255,255,255,.6)'}">${p.stock||0}</span></td>
       <td>
@@ -785,6 +801,11 @@ async function saveProduct() {
     is_new:      document.getElementById('fNew').checked,
   };
 
+  // Auto-assign product number only on NEW products (not on edit)
+  if (!editingId) {
+    payload.product_no = await generateProductNo();
+  }
+
   const btn = document.getElementById('saveBtn');
   btn.disabled = true; btn.innerHTML = '<span class="spinner-sm"></span> Saving...';
 
@@ -883,7 +904,7 @@ async function startEdit(id) {
     name: p.name||'', category: p.category||'Shirting', subcategory: p.subcategory||'Linen',
     brand: p.brand||'', price: p.price||'', stock: p.stock||'',
     description: p.description||'', image_url: p.image_url||'', image_urls: p.image_urls || (p.image_url ? [p.image_url] : []),
-    sizes: parseArr(p.sizes), is_new: !!p.is_new,
+    sizes: parseArr(p.sizes), is_new: !!p.is_new, product_no: p.product_no||'',
   };
   initSelections();
   // Initialize image URLs store (avoids HTML attribute encoding issues)
@@ -1342,7 +1363,10 @@ function _renderOrdersTable() {
                 ? `<button class="cart-items-btn" onclick="toggleCartPopup(this,'${o.id}')">🛒 ${cartItems.length} item${cartItems.length>1?'s':''}</button>
                    <div class="cart-items-popup" id="cpop-${o.id}">
                      ${cartItems.map(it=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(212,175,55,.1);gap:12px">
-                       <span style="font-size:12px;color:#e2e8f0;flex:1">${it.name||'?'}</span>
+                       <div style="flex:1;min-width:0">
+                         ${it.product_no ? `<div style="font-size:9px;color:#D4AF37;font-family:'Cinzel',serif;letter-spacing:.5px;margin-bottom:2px">${it.product_no}</div>` : ''}
+                         <span style="font-size:12px;color:#e2e8f0">${it.name||'?'}</span>
+                       </div>
                        <span style="font-size:11px;color:rgba(255,255,255,.4)">${it.selectedSize||''} ×${it.qty||1}</span>
                        <span class="cinzel" style="font-size:12px;color:#C9A020;white-space:nowrap">₹${Number(it.price||0).toFixed(0)}</span>
                      </div>`).join('')}
