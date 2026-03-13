@@ -4,14 +4,11 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Libas Admin Panel</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧵</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="dns-prefetch" href="https://hkdenuzxxrcvcgtbqgxq.supabase.co"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet"/></noscript>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0} 
 html{scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;background:#0f0a1e;color:#e2e8f0;min-height:100vh}
 ::-webkit-scrollbar{width:5px}
@@ -35,9 +32,6 @@ body{font-family:'Lato',sans-serif;background:#0f0a1e;color:#e2e8f0;min-height:1
 .btn-danger{background:rgba(220,38,38,.15);color:#f87171;border:1px solid rgba(220,38,38,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;transition:all .2s;padding:6px 12px;border-radius:6px}
 .btn-danger:hover{background:rgba(220,38,38,.3)}
 
-.btn-edit{background:rgba(124,58,237,.15);color:#a78bfa;border:1px solid rgba(124,58,237,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;transition:all .2s;padding:6px 12px;border-radius:6px}
-.btn-edit:hover{background:rgba(124,58,237,.3)}
-
 .btn-outline{background:transparent;color:#D4AF37;font-family:'Cinzel',serif;font-weight:600;letter-spacing:1px;border:1px solid rgba(212,175,55,.5);cursor:pointer;transition:all .3s;font-size:12px}
 .btn-outline:hover{background:rgba(212,175,55,.1)}
 
@@ -53,32 +47,10 @@ textarea.input-field{resize:vertical}
 
 .label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:#C9A020;display:block;margin-bottom:6px;text-transform:uppercase}
 
-.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:transparent;color:#e2e8f0;cursor:pointer;font-size:12px;font-family:'Lato',sans-serif;transition:all .2s}
-.chip:hover{border-color:rgba(212,175,55,.5)}
-.chip.selected{background:rgba(59,7,100,.5);border-color:#D4AF37;color:#E8CC6A}
-
-.tag-new{background:linear-gradient(135deg,#C9A020,#E8CC6A);color:#180626;font-family:'Cinzel',serif;font-size:9px;font-weight:700;letter-spacing:2px;padding:2px 8px;border-radius:2px}
-
-.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid rgba(212,175,55,.12)}
-table{width:100%;border-collapse:collapse}
-thead th{background:rgba(59,7,100,.6);color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;padding:12px 16px;text-align:left;white-space:nowrap}
-tbody td{padding:12px 16px;border-bottom:1px solid rgba(212,175,55,.08);font-size:13px;vertical-align:middle}
-tbody tr:hover td{background:rgba(212,175,55,.04)}
-tbody tr:last-child td{border-bottom:none}
-
-.sidebar{width:220px;background:rgba(255,255,255,.03);border-right:1px solid rgba(212,175,55,.1);min-height:100vh;position:fixed;left:0;top:0;padding-top:80px;z-index:10}
-.sidebar-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 20px;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;transition:all .2s;border-left:2px solid transparent;text-align:left}
-.sidebar-btn:hover{background:rgba(212,175,55,.06);color:#E8CC6A;border-left-color:rgba(212,175,55,.4)}
-.sidebar-btn.active{background:rgba(124,58,237,.15);color:#E8CC6A;border-left-color:#D4AF37}
-
 .notify{position:fixed;top:20px;right:20px;z-index:9999;min-width:260px;padding:14px 18px;border-radius:10px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.5px;box-shadow:0 8px 32px rgba(0,0,0,.5);border:1px solid;animation:fadeUp .3s ease;display:flex;align-items:center;gap:10px}
 
 .progress-bar{height:3px;background:rgba(212,175,55,.2);border-radius:3px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,#C9A020,#E8CC6A);border-radius:3px;transition:width .3s}
-
-.stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:center}
-
-.img-preview{width:80px;height:80px;border-radius:8px;border:1px solid rgba(212,175,55,.2);object-fit:cover;background:rgba(59,7,100,.3);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden}
 
 /* Upload drop zone */
 .upload-zone{border:2px dashed rgba(212,175,55,.3);border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(212,175,55,.03)}
@@ -88,43 +60,35 @@ tbody tr:last-child td{border-bottom:none}
 .banner-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.15);border-radius:10px;overflow:hidden;transition:all .2s}
 .banner-card:hover{border-color:rgba(212,175,55,.4)}
 
+/* Portfolio item card */
+.pitem-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;overflow:hidden;transition:all .2s}
+.pitem-card:hover{border-color:rgba(212,175,55,.35)}
+
+/* Portfolio item image slider */
+.pitem-slider{position:relative;overflow:hidden;height:180px}
+.pitem-track{display:flex;height:100%;transition:transform .35s}
+.pitem-slide{min-width:100%;height:100%;flex-shrink:0}
+.pitem-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.pitem-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:1px solid rgba(212,175,55,.4);color:#E8CC6A;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;z-index:5}
+.pitem-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5}
+.pitem-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:all .2s}
+.pitem-dot.active{background:#D4AF37;width:16px;border-radius:3px}
+
+.sidebar{width:220px;background:rgba(255,255,255,.03);border-right:1px solid rgba(212,175,55,.1);min-height:100vh;position:fixed;left:0;top:0;padding-top:80px;z-index:10}
+.sidebar-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 20px;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;transition:all .2s;border-left:2px solid transparent;text-align:left}
+.sidebar-btn:hover{background:rgba(212,175,55,.06);color:#E8CC6A;border-left-color:rgba(212,175,55,.4)}
+.sidebar-btn.active{background:rgba(124,58,237,.15);color:#E8CC6A;border-left-color:#D4AF37}
+
+.category-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;font-weight:700}
+
 @media(max-width:768px){
-  .sidebar{display:none}
-  .main-content{margin-left:0!important}
-  .stat-grid{grid-template-columns:1fr 1fr!important}
+  .sidebar{display:none!important}
+  .main-content{margin-left:0!important;padding:16px!important}
+  #mobileAdminNav{display:block!important}
   .form-grid{grid-template-columns:1fr!important}
+  .pitem-grid{grid-template-columns:1fr!important}
+  .banner-grid{grid-template-columns:1fr!important}
 }
-
-/* CONFIRM MODAL */
-#confirmModal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:center;justify-content:center}
-#confirmModal.open{display:flex}
-.confirm-box{background:linear-gradient(145deg,#1a0535,#160d2e);border:1px solid rgba(212,175,55,.3);border-radius:14px;padding:32px 28px;width:90%;max-width:360px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.7)}
-
-/* ORDER SEARCH */
-.order-search-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
-
-/* ORDER ROW ACTIONS */
-.order-del-btn{background:rgba(220,38,38,.12);color:#f87171;border:1px solid rgba(220,38,38,.25);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;transition:all .2s;line-height:1}
-.order-del-btn:hover{background:rgba(220,38,38,.28);border-color:rgba(220,38,38,.5);transform:scale(1.08)}
-
-/* CART ITEMS EXPAND */
-.cart-items-btn{background:rgba(124,58,237,.12);color:#a78bfa;border:1px solid rgba(124,58,237,.25);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:11px;font-family:'Cinzel',serif;transition:all .2s}
-.cart-items-btn:hover{background:rgba(124,58,237,.25)}
-.cart-items-popup{display:none;position:absolute;z-index:100;background:#1a0d30;border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px;min-width:240px;box-shadow:0 12px 40px rgba(0,0,0,.6);top:100%;left:0;margin-top:4px}
-.cart-items-popup.open{display:block}
-
-/* TABLE IMPROVEMENTS */
-thead th{background:rgba(59,7,100,.6);color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;padding:12px 16px;text-align:left;white-space:nowrap;position:sticky;top:0;z-index:2}
-tbody td{padding:10px 14px;border-bottom:1px solid rgba(212,175,55,.07);font-size:13px;vertical-align:middle}
-tbody tr:hover td{background:rgba(212,175,55,.04)}
-tbody tr:last-child td{border-bottom:none}
-tbody tr{transition:background .15s}
-
-/* SCROLLABLE TABLE */
-.table-scroll{overflow-x:auto;border-radius:10px;border:1px solid rgba(212,175,55,.12);max-height:65vh;overflow-y:auto}
-
-/* CONTAIN for perf */
-.main-content{contain:layout style}
 </style>
 </head>
 <body>
@@ -135,35 +99,31 @@ tbody tr{transition:background .15s}
   <p class="cinzel" style="font-size:13px;color:#C9A020;letter-spacing:3px">LIBAS ADMIN</p>
 </div>
 
-<!-- CONFIRM MODAL -->
-<div id="confirmModal">
-  <div class="confirm-box">
-    <div id="confirmIcon" style="font-size:44px;margin-bottom:12px">🗑</div>
-    <h3 class="cinzel" id="confirmTitle" style="font-size:16px;color:#E8CC6A;letter-spacing:1.5px;margin-bottom:8px">DELETE ORDER</h3>
-    <p id="confirmMsg" style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px">Are you sure? This cannot be undone.</p>
-    <div style="display:flex;gap:10px">
-      <button id="confirmCancel" onclick="closeConfirm()" style="flex:1;padding:11px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);font-family:'Cinzel',serif;font-size:12px;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">Cancel</button>
-      <button id="confirmOk" style="flex:1;padding:11px;border-radius:8px;background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#f87171;font-family:'Cinzel',serif;font-size:12px;cursor:pointer;font-weight:700;transition:all .2s" onmouseover="this.style.background='rgba(220,38,38,.35)'" onmouseout="this.style.background='rgba(220,38,38,.2)'">Delete</button>
-    </div>
-  </div>
-</div>
-
 <!-- MAIN ADMIN APP -->
 <div id="adminApp" style="display:none">
-  <!-- Sidebar -->
+
+  <!-- Sidebar (desktop) -->
   <div class="sidebar">
     <div style="padding:20px;border-bottom:1px solid rgba(212,175,55,.1);position:fixed;top:0;left:0;width:220px;background:#0f0a1e;z-index:11">
       <h1 class="cinzel" style="font-size:20px;font-weight:700"><span class="gold-text">Libas</span></h1>
       <p class="cinzel" style="font-size:7px;letter-spacing:4px;color:#E8CC6A;opacity:.6;margin-top:2px">ADMIN PANEL</p>
     </div>
-    <button class="sidebar-btn active" id="navDashboard" onclick="showTab('dashboard')">📊 Dashboard</button>
-    <button class="sidebar-btn" id="navProducts" onclick="showTab('products')">🧵 All Products</button>
-    <button class="sidebar-btn" id="navAdd" onclick="showTab('add')">➕ Add Product</button>
-    <button class="sidebar-btn" id="navBanners" onclick="showTab('banners')">🖼️ Banner Images</button>
-    <button class="sidebar-btn" id="navSetup" onclick="showTab('setup')">⚙️ DB Setup / Fix</button>
-    <button class="sidebar-btn" id="navOrders" onclick="showTab('orders')">📦 Order Details <span id="ordersCountBadge" style="display:none;margin-left:auto;background:#7C3AED;color:#fff;font-size:9px;padding:2px 7px;border-radius:10px;font-family:'Lato',sans-serif;font-weight:700"></span></button>
-    <button class="sidebar-btn" id="navThaanPwd" onclick="showTab('thaanpwd')">🔑 Wholesale Password</button>
+    <button class="sidebar-btn active" id="navBanners" onclick="showTab('banners')">🖼️ Banner Images</button>
+    <button class="sidebar-btn" id="navPortfolio" onclick="showTab('portfolio')">📁 Portfolio Content</button>
+  </div>
 
+  <!-- Mobile Top Nav (visible only on mobile) -->
+  <div style="display:none;position:sticky;top:0;z-index:200;background:#0f0a1e;border-bottom:1px solid rgba(212,175,55,.2);padding:0" id="mobileAdminNav">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(212,175,55,.15)">
+      <div>
+        <span class="cinzel" style="font-size:18px;font-weight:700"><span class="gold-text">Libas</span></span>
+        <span class="cinzel" style="font-size:7px;letter-spacing:3px;color:#E8CC6A;opacity:.6;margin-left:6px">ADMIN</span>
+      </div>
+    </div>
+    <div style="display:flex;border-bottom:2px solid rgba(212,175,55,.15)">
+      <button id="mnavBanners" onclick="showTab('banners')" style="flex:1;padding:14px 8px;background:rgba(124,58,237,.15);border:none;border-bottom:2px solid #D4AF37;color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px">🖼️ Banners</button>
+      <button id="mnavPortfolio" onclick="showTab('portfolio')" style="flex:1;padding:14px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.5);font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px">📁 Portfolio Content</button>
+    </div>
   </div>
 
   <!-- Main content -->
@@ -172,863 +132,119 @@ tbody tr{transition:background .15s}
   </div>
 </div>
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ╔══════════════════════════════════════════════╗
-// ║         SUPABASE CONFIGURATION               ║
-// ╚══════════════════════════════════════════════╝
+// ── SUPABASE CONFIG ──
 const SUPABASE_URL  = 'https://hkdenuzxxrcvcgtbqgxq.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhrZGVudXp4eHJjdmNndGJxZ3hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NTM5MjIsImV4cCI6MjA4NzMyOTkyMn0.2GgEChu1H-1vyKorxjDm_p4VHP7YOuSpFMo_wF8f6vY';
-
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-// ── CONFIG ──
-const CATEGORIES = ['Shirting', 'Suiting', 'Thaan'];
-const SUBCATS = {
-  Shirting: ['Linen','Cotton Linen','Khadi','Cotton','Polister Cotton'],
-  Suiting:  ['Linen','Cotton Linen','Khadi','Cotton','Polister Cotton'],
-  Thaan:    ['Linen','Cotton Linen','Khadi','Cotton','Polister Cotton'],
-};
-const ALL_COLORS = ['White','Cream','Sky Blue','Navy','Beige','Black','Charcoal','Brown','Grey','Ivory','Natural','Off White','Multi','Blue','Red','Rust','Indigo','Mint','Green','Maroon'];
-const ALL_SIZES  = ['1.60m','1.80m','2.00m','2.15m','2.30m','1.20m','1.30m'];
-const ALL_BRANDS = ['Libas','Ramraj','Arvind','Mafatlal','Linen Club','Donear','Vista Cotton','Rich Linen','Aditya Birla Group','Khadi India','Shahzada Cotton','EVA Cotton'];
-const COLOR_HEX  = {White:'#F9FAFB',Cream:'#FEF9C3','Sky Blue':'#BAE6FD',Navy:'#1E3A5F',Beige:'#F5DEB3',Black:'#1F2937',Charcoal:'#374151',Brown:'#92400E',Grey:'#6B7280',Ivory:'#FFFFF0',Natural:'#D4C5A9','Off White':'#FAF5E4',Multi:'#a855f7',Blue:'#3B82F6',Red:'#EF4444',Rust:'#B45309',Indigo:'#4338CA',Mint:'#6EE7B7',Green:'#16A34A',Maroon:'#881337'};
 const STORAGE_BUCKET = 'product_images';
+const PORTFOLIO_CATEGORIES = [
+  { key: 'about',        label: 'About Us',         color: '#7C3AED' },
+  { key: 'specialities', label: 'Our Specialities',  color: '#C9A020' },
+  { key: 'achievements', label: 'Our Achievements',  color: '#16A34A' },
+  { key: 'goals',        label: 'Our Future Goals',  color: '#2563EB' },
+];
 
 // ── STATE ──
-let products = [];
-let banners  = [];
-let editingId = null;
-let form = blank();
-let selectedColors = [], selectedSizes = [];
-
-function blank() {
-  return { name:'', category:'Shirting', subcategory:'Linen', brand:'Libas', price:'', stock:'', sizes:[], is_new:false, description:'', image_url:'', image_urls:[], product_no:'' };
-}
-
-// ── GENERATE PRODUCT NUMBER ──
-// Format: LIB-0001, LIB-0002 ... auto-increments from highest existing
-async function generateProductNo() {
-  try {
-    const { data, error } = await sb.from('products').select('product_no').order('created_at', { ascending: false });
-    if (error) return 'LIB-0001';
-    const nums = (data || [])
-      .map(p => { const m = (p.product_no||'').match(/(\d+)$/); return m ? parseInt(m[1]) : 0; })
-      .filter(n => n > 0);
-    const next = nums.length > 0 ? Math.max(...nums) + 1 : 1;
-    return 'LIB-' + String(next).padStart(4, '0');
-  } catch { return 'LIB-0001'; }
-}
+let banners = [];
+let portfolioItems = [];
+let pendingBannerUrls = [];
+let pendingPortfolioUrls = [];
+const pitemSlideIdx = {};
+let bannerTableOk = true;
+let portfolioTableOk = true;
 
 // ── INIT ──
 async function init() {
   document.getElementById('loadingScreen').style.display = 'none';
   document.getElementById('adminApp').style.display = 'block';
-  await Promise.all([loadProducts(), loadBanners(), loadOrders()]);
-  showTab('dashboard');
+  await Promise.all([loadBanners(), loadPortfolioItems()]);
+  showTab('banners');
 }
 
-async function doLogout() {}
-function showAdmin(user) {}
-
-// ── DATA LOAD ──
-async function loadProducts() {
-  const { data, error } = await sb.from('products').select('*').order('created_at', { ascending: false });
-  if (error) { notify('Error loading products: ' + error.message, 'error'); return; }
-  products = data || [];
-}
-
+// ── DATA LOADERS ──
 async function loadBanners() {
-  const { data, error } = await sb.from('banner_images').select('*').order('sort_order', { ascending: true });
-  if (error) { console.error('Banner load error:', error); banners = []; return; }
-  banners = data || [];
+  try {
+    const { data, error } = await sb.from('banner_images').select('*').order('sort_order', { ascending: true });
+    if (error) { bannerTableOk = false; banners = []; return; }
+    bannerTableOk = true;
+    banners = data || [];
+  } catch(e) { bannerTableOk = false; banners = []; }
+}
+
+async function loadPortfolioItems() {
+  try {
+    const { data, error } = await sb.from('portfolio_items').select('*').order('created_at', { ascending: false });
+    if (error) { portfolioTableOk = false; portfolioItems = []; return; }
+    portfolioTableOk = true;
+    portfolioItems = data || [];
+  } catch(e) { portfolioTableOk = false; portfolioItems = []; }
 }
 
 // ── TABS ──
 function showTab(tab) {
-  ['dashboard','products','add','banners','setup','orders','thaanpwd'].forEach(t => {
-    const btn = document.getElementById('nav' + t.charAt(0).toUpperCase() + t.slice(1));
-    if (btn) btn.classList.toggle('active', t === tab);
-  });
-  if (tab === 'dashboard') renderDashboard();
-  else if (tab === 'products') renderProducts();
-  else if (tab === 'add') { editingId = null; form = blank(); initSelections(); renderForm(); }
-  else if (tab === 'banners') renderBannersTab();
-  else if (tab === 'setup') renderSetup();
-  else if (tab === 'orders') renderOrders();
-  else if (tab === 'thaanpwd') renderThaanPwd();
-}
+  // Desktop sidebar
+  document.getElementById('navBanners').classList.toggle('active', tab === 'banners');
+  document.getElementById('navPortfolio').classList.toggle('active', tab === 'portfolio');
 
-function renderSetup() {
-  document.getElementById('tabContent').innerHTML = `
-  <div style="margin-bottom:28px">
-    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Database Setup & Fix</span></h2>
-    <p style="color:rgba(255,255,255,.4);font-size:13px">Run these SQL commands in your Supabase SQL Editor to fix upload issues</p>
-  </div>
-
-  <div class="card" style="margin-bottom:20px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:16px;letter-spacing:1px">STEP 1 — CONNECTION TEST</h3>
-    <button class="btn-gold" onclick="testConnection()" style="padding:11px 24px;border-radius:8px;font-size:12px">🔌 Test Supabase Connection</button>
-    <div id="connResult" style="margin-top:14px;font-size:13px"></div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:4px;letter-spacing:1px">STEP 2 — PRODUCTS TABLE + RLS FIX</h3>
-    <p style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:16px">Go to <b style="color:#C9A020">Supabase → SQL Editor → New Query</b> and paste this:</p>
-    <div style="background:#0a0a1a;border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:16px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:2;position:relative">
-      <button onclick="copySQL('sqlProducts')" style="position:absolute;top:10px;right:10px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <pre id="sqlProducts" style="white-space:pre-wrap;margin:0;color:#a5f3fc">-- Create products table (skip if already exists)
-CREATE TABLE IF NOT EXISTS products (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  name text NOT NULL,
-  product_no text,
-  category text,
-  subcategory text,
-  brand text,
-  price numeric,
-  stock integer DEFAULT 0,
-  description text,
-  image_url text,
-  colors jsonb DEFAULT '[]',
-  sizes jsonb DEFAULT '[]',
-  is_new boolean DEFAULT false,
-  created_at timestamptz DEFAULT now()
-);
-
--- Add product_no column if table already exists (safe to run multiple times)
-ALTER TABLE products ADD COLUMN IF NOT EXISTS product_no text;
-
--- DISABLE Row Level Security (allows anon key to insert/update/delete)
-ALTER TABLE products DISABLE ROW LEVEL SECURITY;</pre>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:4px;letter-spacing:1px">STEP 3 — BANNER IMAGES TABLE</h3>
-    <p style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:16px">Run this SQL too for banner slider support:</p>
-    <div style="background:#0a0a1a;border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:16px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:2;position:relative">
-      <button onclick="copySQL('sqlBanners')" style="position:absolute;top:10px;right:10px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <pre id="sqlBanners" style="white-space:pre-wrap;margin:0;color:#a5f3fc">-- banner_images table already exists — just disable RLS
-ALTER TABLE banner_images DISABLE ROW LEVEL SECURITY;
-
--- If you need to recreate it from scratch, run this instead:
--- DROP TABLE IF EXISTS banner_images;
--- CREATE TABLE banner_images (
---   id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
---   image_url text NOT NULL,
---   title text,
---   subtitle text,
---   sort_order integer DEFAULT 0,
---   is_active boolean DEFAULT true,
---   created_at timestamptz DEFAULT now()
--- );
--- ALTER TABLE banner_images DISABLE ROW LEVEL SECURITY;</pre>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:4px;letter-spacing:1px">STEP 5 — ORDERS TABLE (for Shipping & Orders feature)</h3>
-    <p style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:16px">Run this SQL in Supabase to enable order tracking:</p>
-    <div style="background:#0a0a1a;border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:16px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:2;position:relative">
-      <button onclick="copySQL('sqlOrders')" style="position:absolute;top:10px;right:10px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <pre id="sqlOrders" style="white-space:pre-wrap;margin:0;color:#a5f3fc">CREATE TABLE IF NOT EXISTS orders (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  receiver_name text,
-  phone text,
-  state text,
-  city text,
-  pin_code text,
-  full_address text,
-  cart_items text,
-  total_amount numeric,
-  payment_status text DEFAULT 'Pending',
-  order_status text DEFAULT 'New',
-  created_at timestamptz DEFAULT now()
-);
-ALTER TABLE orders DISABLE ROW LEVEL SECURITY;</pre>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:4px;letter-spacing:1px">STEP 4 — STORAGE BUCKET</h3>
-    <p style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:16px">Go to <b style="color:#C9A020">Supabase → Storage → New Bucket</b>, name it <b style="color:#fff">product_images</b>, set to <b style="color:#fff">Public</b>. Then run this SQL:</p>
-    <div style="background:#0a0a1a;border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:16px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:2;position:relative">
-      <button onclick="copySQL('sqlStorage')" style="position:absolute;top:10px;right:10px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <pre id="sqlStorage" style="white-space:pre-wrap;margin:0;color:#a5f3fc">-- Allow anyone to upload and read images
-CREATE POLICY "public_upload" ON storage.objects
-  FOR INSERT TO anon WITH CHECK (bucket_id = 'product_images');
-
-CREATE POLICY "public_read" ON storage.objects
-  FOR SELECT TO anon USING (bucket_id = 'product_images');
-
-CREATE POLICY "public_delete" ON storage.objects
-  FOR DELETE TO anon USING (bucket_id = 'product_images');</pre>
-    </div>
-  </div>`;
-}
-
-async function testConnection() {
-  const res = document.getElementById('connResult');
-  res.innerHTML = '<span style="color:#C9A020">Testing...</span>';
-  try {
-    // Test read
-    const { data, error } = await sb.from('products').select('id').limit(1);
-    if (error) {
-      res.innerHTML = `<div style="color:#f87171;background:rgba(220,38,38,.1);padding:12px;border-radius:8px;border:1px solid rgba(220,38,38,.3)">
-        ❌ <b>Read failed:</b> ${error.message}<br/>
-        <span style="font-size:11px;color:rgba(255,255,255,.4)">Code: ${error.code || 'unknown'} · Check Step 2 above</span>
-      </div>`;
-      return;
-    }
-    // Test insert
-    const { error: insErr } = await sb.from('products').insert([{ name:'__test__', price:1, category:'Shirting', subcategory:'Linen', brand:'Test', stock:0, colors:[], sizes:[], is_new:false, description:'', image_url:'' }]);
-    if (insErr) {
-      res.innerHTML = `<div style="color:#fbbf24;background:rgba(245,158,11,.1);padding:12px;border-radius:8px;border:1px solid rgba(245,158,11,.3)">
-        ⚠️ <b>Read OK, but Insert blocked:</b> ${insErr.message}<br/>
-        <span style="font-size:11px;color:rgba(255,255,255,.4)">This is the cause of upload failures. Run Step 2 SQL to fix.</span>
-      </div>`;
-      return;
-    }
-    // Clean up test row
-    await sb.from('products').delete().eq('name','__test__');
-    res.innerHTML = `<div style="color:#4ade80;background:rgba(22,163,74,.1);padding:12px;border-radius:8px;border:1px solid rgba(22,163,74,.3)">
-      ✅ <b>All good!</b> Supabase connection working. Read & Insert both succeed.
-    </div>`;
-  } catch(e) {
-    res.innerHTML = `<div style="color:#f87171">❌ Exception: ${e.message}</div>`;
-  }
-}
-
-function copySQL(id) {
-  const text = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(text).then(() => notify('✅ SQL copied to clipboard!', 'success')).catch(() => notify('Select and copy manually.', 'info'));
-}
-
-// ── DASHBOARD ──
-function renderDashboard() {
-  const total = products.length;
-  const shirting = products.filter(p => p.category === 'Shirting').length;
-  const suiting  = products.filter(p => p.category === 'Suiting').length;
-  const newCount = products.filter(p => p.is_new).length;
-  const totalOrders = orders.length;
-  const pendingOrders = orders.filter(o => o.order_status === 'New').length;
-  const revenue = orders.filter(o => o.payment_status === 'Paid').reduce((s,o) => s + Number(o.total_amount||0), 0);
-
-  document.getElementById('tabContent').innerHTML = `
-  <div style="margin-bottom:28px">
-    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Dashboard</span></h2>
-    <p style="color:rgba(255,255,255,.4);font-size:13px">Welcome back · Libas Collection Admin</p>
-  </div>
-  <div class="stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px">
-    ${[
-      {icon:'🧵',label:'Total Products',val:total,color:'#7C3AED'},
-      {icon:'👔',label:'Shirting',val:shirting,color:'#2563EB'},
-      {icon:'🎩',label:'Suiting',val:suiting,color:'#059669'},
-      {icon:'⭐',label:'New Arrivals',val:newCount,color:'#D97706'},
-    ].map(s=>`
-    <div class="stat-card">
-      <div style="width:44px;height:44px;border-radius:10px;background:${s.color}22;display:flex;align-items:center;justify-content:center;font-size:24px">${s.icon}</div>
-      <div>
-        <div class="cinzel" style="font-size:26px;font-weight:700;color:#e2e8f0">${s.val}</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4)">${s.label}</div>
-      </div>
-    </div>`).join('')}
-  </div>
-
-  <div class="stat-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px">
-    <div class="stat-card" style="cursor:pointer;transition:border-color .2s" onclick="showTab('orders')" onmouseover="this.style.borderColor='rgba(212,175,55,.35)'" onmouseout="this.style.borderColor=''">
-      <div style="width:44px;height:44px;border-radius:10px;background:#7C3AED22;display:flex;align-items:center;justify-content:center;font-size:22px">📦</div>
-      <div><div class="cinzel" style="font-size:26px;font-weight:700">${totalOrders}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">Total Orders</div></div>
-    </div>
-    <div class="stat-card" style="cursor:pointer;transition:border-color .2s;${pendingOrders>0?'border-color:rgba(124,58,237,.4)':''}" onclick="showTab('orders')" onmouseover="this.style.borderColor='rgba(212,175,55,.35)'" onmouseout="this.style.borderColor='${pendingOrders>0?'rgba(124,58,237,.4)':''}'">
-      <div style="width:44px;height:44px;border-radius:10px;background:#7C3AED22;display:flex;align-items:center;justify-content:center;font-size:22px">🆕</div>
-      <div><div class="cinzel" style="font-size:26px;font-weight:700;color:${pendingOrders>0?'#a78bfa':'#e2e8f0'}">${pendingOrders}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">New Orders</div></div>
-    </div>
-    <div class="stat-card">
-      <div style="width:44px;height:44px;border-radius:10px;background:#C9A02022;display:flex;align-items:center;justify-content:center;font-size:22px">₹</div>
-      <div><div class="cinzel" style="font-size:20px;font-weight:700;color:#C9A020">₹${revenue.toFixed(0)}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">Revenue (Paid)</div></div>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px">
-    <div class="card">
-      <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">RECENT PRODUCTS</h3>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        ${products.slice(0,5).map(p=>`
-        <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid rgba(212,175,55,.08)">
-          <div style="width:40px;height:40px;border-radius:6px;overflow:hidden;background:rgba(59,7,100,.5);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">
-            ${p.image_url ? `<img src="${p.image_url}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='🧵'"/>` : '🧵'}
-          </div>
-          <div style="flex:1">
-            <p style="font-size:13px;font-weight:600">${p.name}</p>
-            <p style="font-size:11px;color:rgba(255,255,255,.4)">${p.category} · ${p.brand||''}</p>
-          </div>
-          <span class="cinzel" style="color:#C9A020;font-weight:700;font-size:14px">₹${Number(p.price).toFixed(0)}</span>
-          ${p.is_new ? '<span class="tag-new">New</span>' : ''}
-        </div>`).join('')}
-        ${products.length === 0 ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:20px">No products yet</p>' : ''}
-      </div>
-      ${products.length > 5 ? `<button class="btn-outline" onclick="showTab('products')" style="width:100%;padding:9px;border-radius:6px;font-size:11px;margin-top:16px">View All Products →</button>` : ''}
-    </div>
-    <div class="card">
-      <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">QUICK ACTIONS</h3>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <button class="btn-gold" onclick="showTab('add')" style="padding:12px;border-radius:8px;font-size:12px">+ Add New Product</button>
-        <button class="btn-outline" onclick="showTab('orders')" style="padding:12px;border-radius:8px;font-size:12px;${pendingOrders>0?'border-color:#a78bfa;color:#a78bfa':''}">📦 Orders ${pendingOrders>0?`<span style="background:#7C3AED;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:6px">${pendingOrders} new</span>`:'→'}</button>
-        <button class="btn-outline" onclick="showTab('products')" style="padding:12px;border-radius:8px;font-size:12px">📋 View All Products</button>
-        <button class="btn-outline" onclick="showTab('banners')" style="padding:12px;border-radius:8px;font-size:12px">🖼️ Manage Banners</button>
-      </div>
-      <div style="margin-top:24px">
-        <h3 class="cinzel" style="font-size:12px;color:#E8CC6A;margin-bottom:14px;letter-spacing:1px">CATEGORY SPLIT</h3>
-        <div style="margin-bottom:10px">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Shirting</span><span>${shirting}</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:${total?Math.round(shirting/total*100):0}%"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Suiting</span><span>${suiting}</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:${total?Math.round(suiting/total*100):0}%"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>`;
-}
-
-// ── PRODUCTS LIST ──
-function renderProducts() {
-  document.getElementById('tabContent').innerHTML = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
-    <div>
-      <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">All Products</span></h2>
-      <p style="color:rgba(255,255,255,.4);font-size:13px">${products.length} products total</p>
-    </div>
-    <button class="btn-gold" onclick="showTab('add')" style="padding:11px 24px;border-radius:8px;font-size:12px">+ Add Product</button>
-  </div>
-  <div style="margin-bottom:16px">
-    <input type="text" id="searchProd" class="input-field" placeholder="Search by name, brand, type..." oninput="filterTable()" style="max-width:400px"/>
-  </div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th>#No</th><th>Image</th><th>Product Name</th><th>Category</th><th>Type</th><th>Brand</th>
-        <th>Price (₹)</th><th>New?</th><th>Stock</th><th>Actions</th>
-      </tr></thead>
-      <tbody id="productTableBody"></tbody>
-    </table>
-  </div>`;
-  renderTable(products);
-}
-
-function renderTable(list) {
-  const body = document.getElementById('productTableBody');
-  if (!body) return;
-  if (list.length === 0) {
-    body.innerHTML = `<tr><td colspan="10" style="text-align:center;padding:60px;color:rgba(255,255,255,.3)"><div style="font-size:40px;margin-bottom:12px">📦</div><p class="cinzel">No products found</p></td></tr>`;
-    return;
-  }
-  body.innerHTML = list.map(p => {
-    const sizes  = parseArr(p.sizes);
-    return `
-    <tr data-pid="${p.id}">
-      <td>
-        <span class="cinzel" style="font-size:11px;font-weight:700;color:#D4AF37;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.25);padding:3px 8px;border-radius:4px;white-space:nowrap;letter-spacing:.5px">${p.product_no||'—'}</span>
-      </td>
-      <td>
-        <div style="width:44px;height:44px;border-radius:6px;overflow:hidden;background:rgba(59,7,100,.5);display:flex;align-items:center;justify-content:center;font-size:18px">
-          ${p.image_url ? `<img src="${p.image_url}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='🧵'"/>` : '🧵'}
-        </div>
-      </td>
-      <td style="font-weight:600;max-width:200px">${p.name}</td>
-      <td><span style="background:rgba(59,7,100,.4);color:#c4b5fd;padding:3px 8px;border-radius:4px;font-size:11px">${p.category||''}</span></td>
-      <td style="color:rgba(255,255,255,.5);font-size:12px">${p.subcategory||''}</td>
-      <td class="cinzel" style="color:#C9A020;font-size:11px">${p.brand||''}</td>
-      <td class="cinzel" style="font-weight:700;color:#a78bfa">₹${Number(p.price).toFixed(0)}</td>
-      <td>${p.is_new?'<span class="tag-new">New</span>':'<span style="color:rgba(255,255,255,.3)">—</span>'}</td>
-      <td style="text-align:center"><span style="color:${Number(p.stock)<10?'#f87171':'rgba(255,255,255,.6)'}">${p.stock||0}</span></td>
-      <td>
-        <div style="display:flex;gap:6px">
-          <button class="btn-edit" onclick="startEdit('${p.id}')">✎ Edit</button>
-          <button class="btn-danger" onclick="delProduct('${p.id}')">🗑</button>
-        </div>
-      </td>
-    </tr>`;
-  }).join('');
-}
-
-let _filterTimer = null;
-function filterTable() {
-  clearTimeout(_filterTimer);
-  _filterTimer = setTimeout(() => {
-    const q = (document.getElementById('searchProd').value || '').toLowerCase();
-    const list = products.filter(p => (p.name||'').toLowerCase().includes(q) || (p.brand||'').toLowerCase().includes(q) || (p.subcategory||'').toLowerCase().includes(q));
-    renderTable(list);
-  }, 120);
-}
-
-// ── ADD / EDIT FORM ──
-function parseArr(v) {
-  if (Array.isArray(v)) return v;
-  if (typeof v === 'string') { try { return JSON.parse(v); } catch { return v.split(',').map(x=>x.trim()).filter(Boolean); } }
-  return [];
-}
-
-function initSelections() {
-  selectedSizes = [...parseArr(form.sizes)];
-}
-
-function renderForm() {
-  const isEdit = !!editingId;
-  const subs = SUBCATS[form.category] || [];
-  const formSizes  = parseArr(form.sizes);
-
-  document.getElementById('tabContent').innerHTML = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px">
-    <div>
-      <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">${isEdit?'Edit Product':'Add New Product'}</span></h2>
-      <p style="color:rgba(255,255,255,.4);font-size:13px">${isEdit?'Update product details below':'Fill in the details to add a new product'}</p>
-    </div>
-    <button class="btn-outline" onclick="showTab('products')" style="padding:9px 16px;border-radius:6px;font-size:11px">← Back to Products</button>
-  </div>
-
-  <div class="card">
-    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-
-      <div style="grid-column:1/-1">
-        <label class="label">Product Name *</label>
-        <input class="input-field" id="fName" type="text" value="${form.name}" placeholder="e.g. Royal Linen Shirting"/>
-      </div>
-
-      <div>
-        <label class="label">Category *</label>
-        <select class="select-field" id="fCat" onchange="onCatChange()">
-          ${CATEGORIES.map(c=>`<option value="${c}" ${form.category===c?'selected':''}>${c}</option>`).join('')}
-        </select>
-      </div>
-
-      <div>
-        <label class="label">Type / Subcategory *</label>
-        <select class="select-field" id="fSub">
-          ${subs.map(s=>`<option value="${s}" ${form.subcategory===s?'selected':''}>${s}</option>`).join('')}
-        </select>
-      </div>
-
-      <div>
-        <label class="label">Brand *</label>
-        <input class="input-field" id="fBrand" type="text" value="${form.brand||''}" list="brandList" placeholder="Brand name"/>
-        <datalist id="brandList">${ALL_BRANDS.map(b=>`<option value="${b}">`).join('')}</datalist>
-      </div>
-
-      <div>
-        <label class="label">Price per Meter (₹) *</label>
-        <input class="input-field" id="fPrice" type="number" min="0" step="1" value="${form.price||''}" placeholder="e.g. 290" oninput="updatePricePreview()"/>
-        <div id="pricePreview" style="margin-top:10px;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:12px;display:${form.price?'block':'none'}">
-          <p class="cinzel" style="font-size:9px;letter-spacing:2px;color:#C9A020;margin-bottom:8px">PRICE PREVIEW PER QUANTITY</p>
-          <div id="pricePreviewGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-            ${form.price ? ALL_SIZES.map(s=>{const m=parseFloat(s)||1;return '<div style="text-align:center;background:rgba(255,255,255,.05);border-radius:6px;padding:6px 4px"><p class="cinzel" style="font-size:9px;color:#9CA3AF;margin-bottom:2px">'+s+'</p><p class="cinzel" style="font-size:11px;color:#E8CC6A;font-weight:700">₹'+(Number(form.price)*m).toFixed(0)+'</p></div>';}).join('') : ''}
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <label class="label">Stock Quantity</label>
-        <input class="input-field" id="fStock" type="number" min="0" value="${form.stock||''}" placeholder="e.g. 50"/>
-      </div>
-
-      <!-- Image Upload -->
-      <div style="grid-column:1/-1">
-        <label class="label">Product Image(s) <span style="color:rgba(255,255,255,.3);font-size:9px">(select multiple — first photo becomes main image)</span></label>
-        <div class="upload-zone" id="prodUploadZone" onclick="document.getElementById('prodImgFile').click()" 
-             ondragover="event.preventDefault();this.classList.add('dragover')" 
-             ondragleave="this.classList.remove('dragover')"
-             ondrop="handleProdDrop(event)">
-          <div id="prodUploadInner">
-            <div style="font-size:40px;margin-bottom:10px">📷</div>
-            <p class="cinzel" style="font-size:11px;color:#C9A020;letter-spacing:1px;margin-bottom:4px">CLICK OR DRAG TO UPLOAD PHOTOS</p>
-            <p style="font-size:12px;color:rgba(255,255,255,.3)">Select multiple photos at once · JPG, PNG, WEBP · Max 10MB each</p>
-          </div>
-          <div id="prodUploadProgress" style="display:none;margin-top:12px">
-            <div class="progress-bar"><div class="progress-fill" id="prodProgressFill" style="width:0%"></div></div>
-            <p style="font-size:11px;color:#C9A020;margin-top:6px" id="prodUploadStatus">Uploading...</p>
-          </div>
-        </div>
-        <input type="file" id="prodImgFile" accept="image/*" multiple style="display:none" onchange="uploadProdImages(this)"/>
-        <input type="hidden" id="fImg" value="${form.image_url||''}"/>
-        <div id="prodImagePreviews" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
-          ${(form.image_urls && form.image_urls.length > 0) ? form.image_urls.map((url, idx) => `<div style="position:relative;width:90px;height:90px;border-radius:8px;overflow:hidden;border:2px solid ${idx===0?'#D4AF37':'rgba(212,175,55,.3)'}"><img src="${url}" style="width:100%;height:100%;object-fit:cover"/>${idx===0?'<span style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);font-size:9px;text-align:center;color:#E8CC6A;padding:2px;font-family:Cinzel,serif">MAIN</span>':''}</div>`).join('') : (form.image_url ? `<div style="position:relative;width:90px;height:90px;border-radius:8px;overflow:hidden;border:2px solid #D4AF37"><img src="${form.image_url}" style="width:100%;height:100%;object-fit:cover"/><span style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);font-size:9px;text-align:center;color:#E8CC6A;padding:2px;font-family:'Cinzel',serif">MAIN</span></div>` : '')}
-        </div>
-      </div>
-
-      <div style="grid-column:1/-1">
-        <label class="label">Description</label>
-        <textarea class="input-field" id="fDesc" rows="3" placeholder="Describe the fabric quality, occasion, features...">${form.description||''}</textarea>
-      </div>
-
-
-
-      <div style="grid-column:1/-1">
-        <label class="label">Available Lengths / Sizes <span style="color:rgba(255,255,255,.3);font-size:9px">(select all that apply)</span></label>
-        <div style="display:flex;flex-wrap:wrap;gap:8px" id="sizeChips">
-          ${ALL_SIZES.map(s=>`<button type="button" class="chip ${formSizes.includes(s)?'selected':''}" onclick="toggleChip(this,'${s}','sizes')" data-val="${s}">${s}</button>`).join('')}
-        </div>
-      </div>
-
-      <div style="display:flex;align-items:center;gap:10px;grid-column:1/-1">
-        <input type="checkbox" id="fNew" ${form.is_new?'checked':''} style="width:18px;height:18px;accent-color:#7C3AED;cursor:pointer"/>
-        <label class="label" for="fNew" style="margin-bottom:0;cursor:pointer;font-size:11px">MARK AS NEW ARRIVAL (shows "New" badge on website)</label>
-      </div>
-
-    </div>
-
-    <div style="display:flex;gap:12px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(212,175,55,.1)">
-      <button class="btn-gold" id="saveBtn" onclick="saveProduct()" style="padding:13px 36px;border-radius:8px;font-size:13px;min-width:180px">${isEdit?'💾 Save Changes':'✅ Add Product'}</button>
-      <button class="btn-outline" onclick="showTab('products')" style="padding:13px 24px;border-radius:8px;font-size:12px">Cancel</button>
-    </div>
-  </div>`;
-}
-
-// ── IMAGE UPLOAD FOR PRODUCTS (multi-file) ──
-async function uploadProdImages(input) {
-  const files = Array.from(input.files);
-  if (!files.length) return;
-  const prog = document.getElementById('prodUploadProgress');
-  const fill = document.getElementById('prodProgressFill');
-  const status = document.getElementById('prodUploadStatus');
-  const previews = document.getElementById('prodImagePreviews');
-  const inner = document.getElementById('prodUploadInner');
-  prog.style.display = 'block';
-  inner.style.opacity = '0.4';
-  let uploadedUrls = [];
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    if (!file.type.startsWith('image/')) continue;
-    if (file.size > 10 * 1024 * 1024) { notify(`${file.name} is too large (max 10MB), skipped.`, 'error'); continue; }
-    fill.style.width = Math.round(((i + 0.5) / files.length) * 100) + '%';
-    status.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}`;
-    const ext = file.name.split('.').pop().toLowerCase();
-    const fileName = `products/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { data, error } = await sb.storage.from(STORAGE_BUCKET).upload(fileName, file, { cacheControl: '3600', upsert: true });
-    if (error) { notify(`Failed: ${file.name} — ${error.message}`, 'error'); continue; }
-    const { data: urlData } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(fileName);
-    uploadedUrls.push(urlData.publicUrl);
-  }
-  fill.style.width = '100%';
-  status.textContent = `✅ ${uploadedUrls.length} of ${files.length} uploaded!`;
-  inner.style.opacity = '1';
-  if (uploadedUrls.length > 0) {
-    // Save first image as main, all images in fImgAll
-    document.getElementById('fImg').value = uploadedUrls[0];
-    window._prodImgUrls = uploadedUrls.slice();
-    // Show previews
-    previews.innerHTML = uploadedUrls.map((url, idx) => `
-      <div style="position:relative;width:90px;height:90px;border-radius:8px;overflow:hidden;border:2px solid ${idx===0?'#D4AF37':'rgba(212,175,55,.3)'}">
-        <img src="${url}" style="width:100%;height:100%;object-fit:cover"/>
-        ${idx===0?'<span style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);font-size:9px;text-align:center;color:#E8CC6A;padding:2px;font-family:Cinzel,serif">MAIN</span>':''}
-      </div>`).join('');
-    notify(`✅ ${uploadedUrls.length} image(s) uploaded successfully!`, 'success');
-  }
-  setTimeout(() => { prog.style.display = 'none'; fill.style.width = '0%'; }, 2000);
-}
-
-function handleProdDrop(e) {
-  e.preventDefault();
-  document.getElementById('prodUploadZone').classList.remove('dragover');
-  const files = e.dataTransfer.files;
-  if (!files.length) return;
-  const inp = document.getElementById('prodImgFile');
-  const dt = new DataTransfer();
-  Array.from(files).forEach(f => { if (f.type.startsWith('image/')) dt.items.add(f); });
-  if (!dt.files.length) { notify('Please drop image files.', 'error'); return; }
-  inp.files = dt.files;
-  uploadProdImages(inp);
-}
-
-function previewImg() {}
-
-function toggleChip(btn, val, type) {
-  btn.classList.toggle('selected');
-  if (type === 'colors') {
-    if (selectedColors.includes(val)) selectedColors = selectedColors.filter(x => x !== val);
-    else selectedColors.push(val);
-    const el = document.getElementById('selectedColors');
-    if (el) el.textContent = 'Selected: ' + (selectedColors.length > 0 ? selectedColors.join(', ') : 'None');
-  } else {
-    if (selectedSizes.includes(val)) selectedSizes = selectedSizes.filter(x => x !== val);
-    else selectedSizes.push(val);
-  }
-}
-
-function onCatChange() {
-  const cat = document.getElementById('fCat').value;
-  const sub = document.getElementById('fSub');
-  if (!sub) return;
-  sub.innerHTML = (SUBCATS[cat] || []).map(s => `<option value="${s}">${s}</option>`).join('');
-}
-
-
-function updatePricePreview() {
-  const val = parseFloat(document.getElementById('fPrice').value) || 0;
-  const box = document.getElementById('pricePreview');
-  const grid = document.getElementById('pricePreviewGrid');
-  if (!box || !grid) return;
-  if (!val) { box.style.display = 'none'; return; }
-  box.style.display = 'block';
-  grid.innerHTML = ALL_SIZES.map(s => {
-    const m = parseFloat(s) || 1;
-    return '<div style="text-align:center;background:rgba(255,255,255,.05);border-radius:6px;padding:6px 4px">'
-      + '<p class="cinzel" style="font-size:9px;color:#9CA3AF;margin-bottom:2px">' + s + '</p>'
-      + '<p class="cinzel" style="font-size:11px;color:#E8CC6A;font-weight:700">₹' + (val * m).toFixed(0) + '</p>'
-      + '</div>';
-  }).join('');
-}
-
-async function saveProduct() {
-  const name  = (document.getElementById('fName').value || '').trim();
-  const price = parseFloat(document.getElementById('fPrice').value || '0');
-  if (!name) { notify('Product name is required', 'error'); return; }
-  if (!price || price <= 0) { notify('Valid price is required', 'error'); return; }
-
-  const payload = {
-    name,
-    category:    document.getElementById('fCat').value,
-    subcategory: document.getElementById('fSub').value,
-    brand:       (document.getElementById('fBrand').value || '').trim(),
-    price,
-    stock:       parseInt(document.getElementById('fStock').value || '0') || 0,
-    description: (document.getElementById('fDesc').value || '').trim(),
-    image_url:   (document.getElementById('fImg') ? document.getElementById('fImg').value.trim() : ''),
-    image_urls:  (window._prodImgUrls || []),
-    sizes:       selectedSizes,
-    is_new:      document.getElementById('fNew').checked,
-  };
-
-  // Auto-assign product number only on NEW products (not on edit)
-  if (!editingId) {
-    payload.product_no = await generateProductNo();
+  // Mobile top nav
+  const mb = document.getElementById('mnavBanners');
+  const mp = document.getElementById('mnavPortfolio');
+  if (mb && mp) {
+    const activeStyle = 'flex:1;padding:14px 8px;background:rgba(124,58,237,.15);border:none;border-bottom:2px solid #D4AF37;color:#E8CC6A;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px';
+    const idleStyle   = 'flex:1;padding:14px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.5);font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px';
+    mb.style.cssText = tab === 'banners'   ? activeStyle : idleStyle;
+    mp.style.cssText = tab === 'portfolio' ? activeStyle : idleStyle;
   }
 
-  const btn = document.getElementById('saveBtn');
-  btn.disabled = true; btn.innerHTML = '<span class="spinner-sm"></span> Saving...';
-
-  try {
-    let result;
-    if (editingId) {
-      result = await sb.from('products').update(payload).eq('id', editingId);
-    } else {
-      result = await sb.from('products').insert([payload]);
-    }
-
-    console.log('Supabase result:', result);
-
-    if (result.error) {
-      const errMsg = result.error.message || result.error.details || result.error.hint || JSON.stringify(result.error);
-      // Show detailed error in the page
-      showSaveError(errMsg, result.error.code);
-      btn.disabled = false;
-      btn.textContent = editingId ? '💾 Save Changes' : '✅ Add Product';
-    } else {
-      notify(editingId ? '✅ Product updated!' : '✅ Product added to website!', 'success');
-      // Hide any previous error
-      const errBox = document.getElementById('saveErrorBox');
-      if (errBox) errBox.style.display = 'none';
-      editingId = null;
-      await loadProducts();
-      showTab('products');
-    }
-  } catch(e) {
-    console.error('Save exception:', e);
-    showSaveError(e.message || String(e), 'exception');
-    btn.disabled = false;
-    btn.textContent = editingId ? '💾 Save Changes' : '✅ Add Product';
-  }
+  if (tab === 'banners') renderBannersTab();
+  else if (tab === 'portfolio') renderPortfolioTab();
 }
 
-function showSaveError(msg, code) {
-  // Remove old box
-  const old = document.getElementById('saveErrorBox');
-  if (old) old.remove();
-
-  let hint = '';
-  if (code === '42501' || msg.toLowerCase().includes('row-level security') || msg.toLowerCase().includes('permission') || msg.toLowerCase().includes('policy')) {
-    hint = `<div style="margin-top:10px;padding:12px;background:rgba(0,0,0,.3);border-radius:6px;font-family:monospace;font-size:11px;color:#fbbf24;line-height:1.8">
-      <b style="color:#E8CC6A">Fix: Run this SQL in your Supabase SQL Editor</b><br/><br/>
-      -- 1. Disable RLS on products table (easiest fix)<br/>
-      ALTER TABLE products DISABLE ROW LEVEL SECURITY;<br/><br/>
-      -- OR add a permissive policy:<br/>
-      ALTER TABLE products ENABLE ROW LEVEL SECURITY;<br/>
-      CREATE POLICY "allow_all" ON products FOR ALL USING (true) WITH CHECK (true);
-    </div>`;
-  } else if (msg.toLowerCase().includes('does not exist') || msg.toLowerCase().includes('relation')) {
-    hint = `<div style="margin-top:10px;padding:12px;background:rgba(0,0,0,.3);border-radius:6px;font-family:monospace;font-size:11px;color:#fbbf24;line-height:1.8">
-      <b style="color:#E8CC6A">Fix: Create the products table in Supabase SQL Editor</b><br/><br/>
-      CREATE TABLE products (<br/>
-      &nbsp;&nbsp;id uuid DEFAULT gen_random_uuid() PRIMARY KEY,<br/>
-      &nbsp;&nbsp;name text NOT NULL,<br/>
-      &nbsp;&nbsp;category text,<br/>
-      &nbsp;&nbsp;subcategory text,<br/>
-      &nbsp;&nbsp;brand text,<br/>
-      &nbsp;&nbsp;price numeric,<br/>
-      &nbsp;&nbsp;stock integer DEFAULT 0,<br/>
-      &nbsp;&nbsp;description text,<br/>
-      &nbsp;&nbsp;image_url text,<br/>
-      &nbsp;&nbsp;colors jsonb DEFAULT '[]',<br/>
-      &nbsp;&nbsp;sizes jsonb DEFAULT '[]',<br/>
-      &nbsp;&nbsp;is_new boolean DEFAULT false,<br/>
-      &nbsp;&nbsp;created_at timestamptz DEFAULT now()<br/>
-      );<br/>
-      ALTER TABLE products DISABLE ROW LEVEL SECURITY;
-    </div>`;
-  }
-
-  const box = document.createElement('div');
-  box.id = 'saveErrorBox';
-  box.style.cssText = 'margin-top:16px;padding:16px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:10px;color:#fca5a5;font-size:13px;line-height:1.6';
-  box.innerHTML = `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span style="font-size:18px">❌</span><b style="font-family:Cinzel,serif;letter-spacing:.5px">SAVE FAILED</b></div>
-    <div style="color:#f87171">${msg}</div>${hint}`;
-
-  // Insert after save buttons
-  const btns = document.getElementById('saveBtn');
-  if (btns && btns.parentElement) {
-    btns.parentElement.parentElement.appendChild(box);
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  } else {
-    document.getElementById('tabContent').appendChild(box);
-  }
-  notify('❌ Save failed — see error details below', 'error');
-}
-
-async function startEdit(id) {
-  const p = products.find(x => x.id == id);
-  if (!p) return;
-  editingId = id;
-  form = {
-    name: p.name||'', category: p.category||'Shirting', subcategory: p.subcategory||'Linen',
-    brand: p.brand||'', price: p.price||'', stock: p.stock||'',
-    description: p.description||'', image_url: p.image_url||'', image_urls: p.image_urls || (p.image_url ? [p.image_url] : []),
-    sizes: parseArr(p.sizes), is_new: !!p.is_new, product_no: p.product_no||'',
-  };
-  initSelections();
-  // Initialize image URLs store (avoids HTML attribute encoding issues)
-  window._prodImgUrls = (form.image_urls && form.image_urls.length > 0)
-    ? form.image_urls.slice()
-    : (form.image_url ? [form.image_url] : []);
-  renderForm();
-}
-
-async function delProduct(id) {
-  const p = products.find(x => x.id == id);
-  const name = p ? p.name : 'this product';
-  showConfirm({
-    icon: '🗑',
-    title: 'DELETE PRODUCT',
-    msg: `Delete "${name}"? This permanently removes it from the database and website.`,
-    okLabel: '🗑 Delete',
-    okColor: '#f87171',
-    onOk: async () => {
-      // Optimistic UI
-      const row = document.querySelector(`tr[data-pid="${id}"]`);
-      if (row) { row.style.transition = 'opacity .25s'; row.style.opacity = '0.3'; }
-
-      try {
-        console.log('[delProduct] Attempting delete for id:', id);
-
-        const { error, data, status, statusText } = await sb
-          .from('products')
-          .delete()
-          .eq('id', id)
-          .select();   // ← .select() forces Supabase to return deleted rows; empty = RLS blocked it
-
-        console.log('[delProduct] Response:', { error, data, status, statusText });
-
-        if (error) {
-          console.error('[delProduct] Supabase error:', error);
-          notify('❌ Delete failed: ' + (error.message || JSON.stringify(error)), 'error');
-          showDeleteError(error.message || JSON.stringify(error), error.code);
-          if (row) row.style.opacity = '1';
-          return;
-        }
-
-        // If data is empty array, RLS silently blocked the delete (no error, just no rows affected)
-        if (Array.isArray(data) && data.length === 0) {
-          console.warn('[delProduct] 0 rows deleted — likely RLS blocking anon delete');
-          notify('❌ Delete blocked by database policy (RLS). Run the fix below.', 'error');
-          showDeleteError('0 rows deleted — Row Level Security is blocking DELETE operations for the anon key.', '42501');
-          if (row) row.style.opacity = '1';
-          return;
-        }
-
-        // Success
-        console.log('[delProduct] Deleted successfully:', data);
-        products = products.filter(x => x.id != id);
-        notify('🗑 Product deleted successfully.', 'info');
-        renderProducts();
-
-      } catch(e) {
-        console.error('[delProduct] Exception:', e);
-        notify('❌ Exception: ' + e.message, 'error');
-        if (row) row.style.opacity = '1';
-      }
-    }
-  });
-}
-
-function showDeleteError(msg, code) {
-  const old = document.getElementById('deleteErrorBox');
-  if (old) old.remove();
-
-  const isRLS = code === '42501' || (msg||'').includes('0 rows') || (msg||'').toLowerCase().includes('rls') || (msg||'').toLowerCase().includes('security') || (msg||'').toLowerCase().includes('policy');
-  const hint = isRLS ? `
-    <div style="margin-top:12px;background:rgba(0,0,0,.35);border-radius:8px;padding:14px;font-family:monospace;font-size:12px;color:#fbbf24;line-height:2;position:relative">
-      <button onclick="copyText('rlsFixSQL')" style="position:absolute;top:8px;right:8px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:3px 9px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <b style="color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px">Run this SQL in Supabase → SQL Editor:</b><br/><br/>
-      <span id="rlsFixSQL">-- Fix: Allow DELETE for anon key on products table
-ALTER TABLE products DISABLE ROW LEVEL SECURITY;
-
--- OR keep RLS enabled but add a policy:
--- ALTER TABLE products ENABLE ROW LEVEL SECURITY;
--- DROP POLICY IF EXISTS "allow_delete" ON products;
--- CREATE POLICY "allow_delete" ON products FOR DELETE USING (true);</span>
-    </div>` : '';
-
-  const box = document.createElement('div');
-  box.id = 'deleteErrorBox';
-  box.style.cssText = 'margin:16px 0;padding:16px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:10px;color:#fca5a5;font-size:13px;line-height:1.6';
-  box.innerHTML = `
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-      <span style="font-size:18px">❌</span>
-      <b style="font-family:'Cinzel',serif;letter-spacing:.5px">DELETE FAILED</b>
-      <button onclick="this.closest('#deleteErrorBox').remove()" style="margin-left:auto;background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px">✕</button>
-    </div>
-    <div style="color:#f87171;font-size:12px">${msg}</div>${hint}`;
-
-  const tc = document.getElementById('tabContent');
-  if (tc) { tc.insertAdjacentElement('afterbegin', box); box.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
-}
-
-function copyText(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  navigator.clipboard.writeText(el.textContent).then(() => notify('✅ SQL copied!', 'success')).catch(() => notify('Select and copy manually.','info'));
-}
-
-// ─────────────────────────────────────────────
+// ════════════════════════════════════════
 // ── BANNER IMAGES TAB ──
-// ─────────────────────────────────────────────
+// ════════════════════════════════════════
 function renderBannersTab() {
-  document.getElementById('tabContent').innerHTML = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+  const dbAlert = !bannerTableOk ? `
+  <div style="background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:10px;padding:16px 20px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start">
+    <span style="font-size:20px;flex-shrink:0">⚠️</span>
     <div>
-      <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Banner Images</span></h2>
-      <p style="color:rgba(255,255,255,.4);font-size:13px">Upload and manage sliding banner images shown on the website homepage</p>
+      <p class="cinzel" style="font-size:12px;color:#f87171;letter-spacing:1px;margin-bottom:6px">BANNER TABLE ERROR — RUN THIS SQL IN SUPABASE</p>
+      <div style="background:rgba(0,0,0,.4);border-radius:6px;padding:10px 14px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:1.8;position:relative;margin-bottom:8px">
+        <button onclick="navigator.clipboard.writeText(document.getElementById('sqlBannerFix').textContent).then(()=>notify('Copied!','success'))" style="position:absolute;top:6px;right:8px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
+        <pre id="sqlBannerFix" style="white-space:pre-wrap;margin:0">ALTER TABLE banner_images DISABLE ROW LEVEL SECURITY;
+
+-- If table doesn't exist yet:
+CREATE TABLE IF NOT EXISTS banner_images (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  image_url text NOT NULL,
+  title text,
+  subtitle text,
+  sort_order integer DEFAULT 0,
+  is_active boolean DEFAULT true,
+  created_at timestamptz DEFAULT now()
+);
+ALTER TABLE banner_images DISABLE ROW LEVEL SECURITY;</pre>
+      </div>
+      <button onclick="loadBanners().then(renderBannersTab)" class="btn-outline" style="padding:7px 16px;border-radius:6px;font-size:11px">↺ Retry</button>
     </div>
+  </div>` : '';
+  document.getElementById('tabContent').innerHTML = `
+  ${dbAlert}
+  <div style="margin-bottom:28px">
+    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Banner Images</span></h2>
+    <p style="color:rgba(255,255,255,.4);font-size:13px">Upload and manage the homepage banner slider images</p>
   </div>
 
-  <!-- Upload new banner -->
-  <div class="card" style="margin-bottom:28px">
-    <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">➕ ADD NEW BANNER</h3>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+  <!-- Upload Form -->
+  <div class="card" style="margin-bottom:24px">
+    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">ADD NEW BANNERS</h3>
+    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
       <div>
-        <label class="label">Banner Title (optional)</label>
-        <input class="input-field" id="bTitle" type="text" placeholder="e.g. Summer Collection 2025"/>
+        <label class="label">Title (optional)</label>
+        <input class="input-field" id="bTitle" type="text" placeholder="e.g. Premium Collection 2025"/>
       </div>
       <div>
         <label class="label">Subtitle (optional)</label>
@@ -1040,7 +256,6 @@ function renderBannersTab() {
       <input class="input-field" id="bOrder" type="number" min="0" value="${banners.length}" style="max-width:120px"/>
     </div>
 
-    <!-- Upload zone -->
     <label class="label">Banner Image(s) * <span style="color:rgba(255,255,255,.3);font-size:9px">(select multiple — each becomes a separate banner slide)</span></label>
     <div class="upload-zone" id="bannerUploadZone" onclick="document.getElementById('bannerImgFile').click()"
          ondragover="event.preventDefault();this.classList.add('dragover')"
@@ -1061,10 +276,10 @@ function renderBannersTab() {
     <button class="btn-gold" id="addBannerBtn" onclick="addBanners()" style="padding:12px 32px;border-radius:8px;font-size:12px;margin-top:16px">✅ Save Banners</button>
   </div>
 
-  <!-- Current banners -->
+  <!-- Current Banners -->
   <div class="card">
     <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">CURRENT BANNERS (${banners.length})</h3>
-    <div id="bannerList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">
+    <div id="bannerList" class="banner-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">
       ${banners.length === 0
         ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet. Upload your first one above.</p>'
         : banners.map(b => bannerCardHTML(b)).join('')}
@@ -1073,41 +288,29 @@ function renderBannersTab() {
 }
 
 function bannerCardHTML(b) {
-  const safeId = b.id;
   const isActive = b.is_active;
-  return '<div class="banner-card" id="bcard-' + safeId + '" style="border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,' + (isActive?'.35':'.12') + ');background:rgba(255,255,255,.03);transition:border-color .2s">'
-    // Image - full width, proper ratio
+  return '<div class="banner-card" id="bcard-' + b.id + '">'
     + '<div style="width:100%;height:180px;background:rgba(59,7,100,.5);position:relative;overflow:hidden">'
     + (b.image_url
         ? '<img src="' + b.image_url + '" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background=\'rgba(59,7,100,.8)\'">'
-        : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px"><span style="font-size:40px">🖼️</span><span style="color:rgba(255,255,255,.3);font-size:11px">No image</span></div>')
-    + '<span style="position:absolute;top:10px;left:10px;font-size:9px;padding:4px 10px;border-radius:20px;background:' + (isActive?'rgba(22,163,74,.9)':'rgba(107,114,128,.7)') + ';color:#fff;font-family:Cinzel,serif;letter-spacing:1.5px;font-weight:700">'
-    + (isActive ? '● LIVE' : '● HIDDEN') + '</span>'
-    + '<span style="position:absolute;top:10px;right:10px;font-size:9px;padding:4px 10px;border-radius:20px;background:rgba(0,0,0,.5);color:rgba(212,175,55,.8);font-family:Cinzel,serif">Order: ' + (b.sort_order||0) + '</span>'
+        : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px"><span style="font-size:40px">🖼️</span></div>')
+    + '<span style="position:absolute;top:10px;left:10px;font-size:9px;padding:4px 10px;border-radius:20px;background:' + (isActive ? 'rgba(22,163,74,.9)' : 'rgba(107,114,128,.7)') + ';color:#fff;font-family:Cinzel,serif;letter-spacing:1.5px;font-weight:700">' + (isActive ? '● LIVE' : '● HIDDEN') + '</span>'
+    + '<span style="position:absolute;top:10px;right:10px;font-size:9px;padding:4px 10px;border-radius:20px;background:rgba(0,0,0,.5);color:rgba(212,175,55,.8);font-family:Cinzel,serif">Order: ' + (b.sort_order || 0) + '</span>'
     + '</div>'
-    // Info
     + '<div style="padding:12px 14px">'
     + '<p style="font-weight:600;font-size:13px;color:#fff;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (b.title || '<span style="color:rgba(255,255,255,.3)">No title set</span>') + '</p>'
     + (b.subtitle ? '<p style="font-size:11px;color:rgba(212,175,55,.6);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + b.subtitle + '</p>' : '<div style="margin-bottom:10px"></div>')
-    // Buttons row
     + '<div style="display:flex;gap:8px">'
-    + '<button onclick="toggleBannerActive(\'' + safeId + '\',' + isActive + ')" style="flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-family:Cinzel,serif;cursor:pointer;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.1);color:#E8CC6A;letter-spacing:.5px">'
-    + (isActive ? '👁 Hide' : '✅ Show') + '</button>'
-    + '<button onclick="delBanner(\'' + safeId + '\')" style="flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-family:Cinzel,serif;cursor:pointer;border:1px solid rgba(220,38,38,.5);background:rgba(127,29,29,.4);color:#fca5a5;letter-spacing:.5px">🗑 Delete</button>'
-    + '</div>'
-    + '</div>'
-    + '</div>';
+    + '<button onclick="toggleBannerActive(\'' + b.id + '\',' + isActive + ')" style="flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-family:Cinzel,serif;cursor:pointer;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.1);color:#E8CC6A;letter-spacing:.5px">' + (isActive ? '👁 Hide' : '✅ Show') + '</button>'
+    + '<button onclick="delBanner(\'' + b.id + '\')" style="flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-family:Cinzel,serif;cursor:pointer;border:1px solid rgba(220,38,38,.5);background:rgba(127,29,29,.4);color:#fca5a5;letter-spacing:.5px">🗑 Delete</button>'
+    + '</div></div></div>';
 }
-
-// ── BANNER UPLOAD (multi-file) ──
-let pendingBannerUrls = [];
 
 async function handleBannerFileSelect(input) {
   const files = Array.from(input.files);
   if (!files.length) return;
   await uploadBannerFiles(files);
 }
-
 function handleBannerDrop(e) {
   e.preventDefault();
   document.getElementById('bannerUploadZone').classList.remove('dragover');
@@ -1115,14 +318,12 @@ function handleBannerDrop(e) {
   if (!files.length) { notify('Please drop image files.', 'error'); return; }
   uploadBannerFiles(files);
 }
-
 async function uploadBannerFiles(files) {
   const prog = document.getElementById('bannerUploadProgress');
   const fill = document.getElementById('bannerProgressFill');
   const status = document.getElementById('bannerUploadStatus');
   const prevWrap = document.getElementById('bannerPreviewWrap');
-  prog.style.display = 'block';
-  prevWrap.style.opacity = '0.4';
+  prog.style.display = 'block'; prevWrap.style.opacity = '0.4';
   pendingBannerUrls = [];
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
@@ -1140,16 +341,13 @@ async function uploadBannerFiles(files) {
   status.textContent = `✅ ${pendingBannerUrls.length} of ${files.length} uploaded!`;
   prevWrap.style.opacity = '1';
   if (pendingBannerUrls.length > 0) {
-    prevWrap.innerHTML = `
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px">
-        ${pendingBannerUrls.map(url => `<img src="${url}" style="height:80px;width:140px;object-fit:cover;border-radius:6px;border:1px solid rgba(212,175,55,.4)"/>`).join('')}
-      </div>
-      <p style="color:#4ade80;font-size:12px">${pendingBannerUrls.length} image(s) ready — click Save Banners below</p>`;
+    prevWrap.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px">
+      ${pendingBannerUrls.map(url => `<img src="${url}" style="height:80px;width:140px;object-fit:cover;border-radius:6px;border:1px solid rgba(212,175,55,.4)"/>`).join('')}
+    </div><p style="color:#4ade80;font-size:12px">${pendingBannerUrls.length} image(s) ready — click Save Banners below</p>`;
     notify(`✅ ${pendingBannerUrls.length} banner image(s) uploaded!`, 'success');
   }
   setTimeout(() => { prog.style.display = 'none'; fill.style.width = '0%'; }, 2000);
 }
-
 async function addBanners() {
   if (!pendingBannerUrls.length) { notify('Please upload at least one image first.', 'error'); return; }
   const btn = document.getElementById('addBannerBtn');
@@ -1157,44 +355,22 @@ async function addBanners() {
   const title    = (document.getElementById('bTitle').value || '').trim() || null;
   const subtitle = (document.getElementById('bSubtitle').value || '').trim() || null;
   const baseOrder = parseInt(document.getElementById('bOrder').value || '0') || 0;
-  const rows = pendingBannerUrls.map((url, idx) => ({
-    image_url: url, title, subtitle,
-    sort_order: baseOrder + idx,
-    is_active: true,
-  }));
+  const rows = pendingBannerUrls.map((url, idx) => ({ image_url: url, title, subtitle, sort_order: baseOrder + idx, is_active: true }));
   const { error } = await sb.from('banner_images').insert(rows);
-  if (error) {
-    notify('Error saving banners: ' + error.message, 'error');
-    btn.disabled = false; btn.textContent = '✅ Save Banners';
-    return;
-  }
-  notify(`✅ ${rows.length} banner(s) added to website!`, 'success');
+  if (error) { notify('Error saving banners: ' + error.message, 'error'); btn.disabled = false; btn.textContent = '✅ Save Banners'; return; }
+  notify(`✅ ${rows.length} banner(s) added!`, 'success');
   pendingBannerUrls = [];
   await loadBanners();
   renderBannersTab();
 }
-
-// kept for legacy compat
-async function addBanner() { await addBanners(); }
-function previewBannerUrl() {}
-function uploadBannerFile() {}
-
 async function toggleBannerActive(id, current) {
   const { error } = await sb.from('banner_images').update({ is_active: !current }).eq('id', id);
   if (error) { notify('Error: ' + error.message, 'error'); return; }
   await loadBanners();
   const list = document.getElementById('bannerList');
-  if (list) {
-    list.style.display="grid";
-    list.style.gridTemplateColumns="repeat(auto-fill,minmax(260px,1fr))";
-    list.style.gap="14px";
-    list.innerHTML = banners.length === 0
-      ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet.</p>'
-      : banners.map(b => bannerCardHTML(b)).join('');
-  }
+  if (list) list.innerHTML = banners.length === 0 ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet.</p>' : banners.map(b => bannerCardHTML(b)).join('');
   notify(`Banner ${!current ? 'shown' : 'hidden'} on website.`, 'success');
 }
-
 async function delBanner(id) {
   if (!confirm('Delete this banner? This cannot be undone.')) return;
   const { error } = await sb.from('banner_images').delete().eq('id', id);
@@ -1202,468 +378,357 @@ async function delBanner(id) {
   notify('🗑 Banner deleted.', 'info');
   await loadBanners();
   const list = document.getElementById('bannerList');
-  if (list) {
-    list.style.display="grid";
-    list.style.gridTemplateColumns="repeat(auto-fill,minmax(260px,1fr))";
-    list.style.gap="14px";
-    list.innerHTML = banners.length === 0
-      ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet.</p>'
-      : banners.map(b => bannerCardHTML(b)).join('');
-  }
+  if (list) list.innerHTML = banners.length === 0 ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet.</p>' : banners.map(b => bannerCardHTML(b)).join('');
 }
 
+// ════════════════════════════════════════
+// ── PORTFOLIO CONTENT TAB ──
+// ════════════════════════════════════════
+function renderPortfolioTab() {
+  const catOptions = PORTFOLIO_CATEGORIES.map(c => `<option value="${c.key}">${c.label}</option>`).join('');
+  const totalItems = portfolioItems.length;
 
-// ── ORDERS ──
-let orders = [];
-let _ordersFilter = '';
-let _ordersPayFilter = '';
-
-async function loadOrders() {
-  const { data, error } = await sb.from('orders').select('*').order('created_at', { ascending: false });
-  if (error) { console.error('Orders load error:', error); orders = []; return; }
-  orders = data || [];
-  // Update sidebar badge
-  const badge = document.getElementById('ordersCountBadge');
-  if (badge) {
-    const newCount = orders.filter(o => o.order_status === 'New').length;
-    badge.textContent = newCount;
-    badge.style.display = newCount > 0 ? 'inline' : 'none';
-  }
-}
-
-function statusColor(s) {
-  const map = { New:'#7C3AED', Processing:'#D97706', Shipped:'#2563EB', Delivered:'#16A34A', Cancelled:'#DC2626' };
-  return map[s] || '#6B7280';
-}
-function payColor(s) {
-  return s === 'Paid' ? '#16A34A' : s === 'Failed' ? '#DC2626' : '#D97706';
-}
-
-function getFilteredOrders() {
-  let list = orders;
-  if (_ordersFilter) {
-    const q = _ordersFilter.toLowerCase();
-    list = list.filter(o =>
-      (o.receiver_name||'').toLowerCase().includes(q) ||
-      (o.phone||'').includes(q) ||
-      (o.city||'').toLowerCase().includes(q) ||
-      (o.state||'').toLowerCase().includes(q) ||
-      (o.pin_code||'').includes(q)
-    );
-  }
-  if (_ordersPayFilter) list = list.filter(o => o.payment_status === _ordersPayFilter);
-  return list;
-}
-
-async function renderOrders() {
-  await loadOrders();
-  _renderOrdersUI();
-}
-
-function _renderOrdersUI() {
-  const total   = orders.length;
-  const pending = orders.filter(o => o.payment_status === 'Pending').length;
-  const paid    = orders.filter(o => o.payment_status === 'Paid').length;
-  const revenue = orders.filter(o => o.payment_status === 'Paid').reduce((s,o) => s + Number(o.total_amount||0), 0);
-  const filtered = getFilteredOrders();
-
-  document.getElementById('tabContent').innerHTML = `
-  <div style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
-    <div>
-      <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Order Details</span></h2>
-      <p style="color:rgba(255,255,255,.4);font-size:13px">${total} total orders</p>
-    </div>
-    <button class="btn-outline" onclick="renderOrders()" style="padding:8px 18px;border-radius:6px;font-size:11px;display:flex;align-items:center;gap:6px">&#8635; Refresh</button>
-  </div>
-
-  <div class="stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px">
-    <div class="stat-card" style="cursor:pointer" onclick="_setPayFilter('')">
-      <div style="width:44px;height:44px;border-radius:10px;background:#7C3AED22;display:flex;align-items:center;justify-content:center;font-size:22px">&#128230;</div>
-      <div><div class="cinzel" style="font-size:26px;font-weight:700">${total}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">Total Orders</div></div>
-    </div>
-    <div class="stat-card" style="cursor:pointer" onclick="_setPayFilter('Pending')">
-      <div style="width:44px;height:44px;border-radius:10px;background:#D9770622;display:flex;align-items:center;justify-content:center;font-size:22px">&#9201;</div>
-      <div><div class="cinzel" style="font-size:26px;font-weight:700;color:#D97706">${pending}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">Pending Payment</div></div>
-    </div>
-    <div class="stat-card" style="cursor:pointer" onclick="_setPayFilter('Paid')">
-      <div style="width:44px;height:44px;border-radius:10px;background:#16A34A22;display:flex;align-items:center;justify-content:center;font-size:22px">&#9989;</div>
-      <div><div class="cinzel" style="font-size:26px;font-weight:700;color:#16A34A">${paid}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">Paid Orders</div></div>
-    </div>
-    <div class="stat-card">
-      <div style="width:44px;height:44px;border-radius:10px;background:#C9A02022;display:flex;align-items:center;justify-content:center;font-size:22px">&#8377;</div>
-      <div><div class="cinzel" style="font-size:20px;font-weight:700;color:#C9A020">&#8377;${revenue.toFixed(0)}</div><div style="font-size:12px;color:rgba(255,255,255,.4)">Total Revenue</div></div>
-    </div>
-  </div>
-
-  <div class="card" style="padding:0;overflow:visible">
-    <div style="padding:14px 18px;border-bottom:1px solid rgba(212,175,55,.1)">
-      <div class="order-search-bar">
-        <input type="text" id="orderSearch" class="input-field" placeholder="Search by name, phone, city, PIN..." value="${_ordersFilter}"
-          oninput="_ordersFilter=this.value;_renderOrdersTable()" style="max-width:320px;flex:1"/>
-        <select class="select-field" onchange="_ordersPayFilter=this.value;_renderOrdersTable()" style="max-width:170px;width:auto">
-          <option value="" ${!_ordersPayFilter?'selected':''}>All Payments</option>
-          <option value="Pending" ${_ordersPayFilter==='Pending'?'selected':''}>Pending</option>
-          <option value="Paid" ${_ordersPayFilter==='Paid'?'selected':''}>Paid</option>
-          <option value="Failed" ${_ordersPayFilter==='Failed'?'selected':''}>Failed</option>
-        </select>
-        ${(_ordersFilter||_ordersPayFilter)?`<button onclick="_ordersFilter='';_ordersPayFilter='';_renderOrdersUI()" style="background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.3);color:#f87171;padding:8px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-family:'Cinzel',serif">✕ Clear</button>`:''}
-        <span style="color:rgba(255,255,255,.35);font-size:12px;margin-left:auto">${filtered.length} result${filtered.length!==1?'s':''}</span>
+  // Show prominent alert if portfolio table is missing
+  const dbAlert = !portfolioTableOk ? `
+  <div style="background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:10px;padding:16px 20px;margin-bottom:24px">
+    <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
+      <span style="font-size:20px;flex-shrink:0">⚠️</span>
+      <div>
+        <p class="cinzel" style="font-size:12px;color:#f87171;letter-spacing:1px;margin-bottom:4px">PORTFOLIO TABLE NOT FOUND</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6">Run this SQL once in <b style="color:#C9A020">Supabase → SQL Editor</b>, then click Retry:</p>
       </div>
     </div>
-    <div id="ordersTableWrap"></div>
-  </div>`;
+    <div style="background:rgba(0,0,0,.4);border-radius:6px;padding:12px 14px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:1.8;position:relative;margin-bottom:12px">
+      <button onclick="navigator.clipboard.writeText(document.getElementById('sqlPortfolioFix').textContent).then(()=>notify('SQL copied!','success'))" style="position:absolute;top:6px;right:8px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
+      <pre id="sqlPortfolioFix" style="white-space:pre-wrap;margin:0">CREATE TABLE IF NOT EXISTS portfolio_items (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  image_urls jsonb DEFAULT '[]',
+  category text NOT NULL,
+  title text,
+  description text,
+  sort_order integer DEFAULT 0,
+  created_at timestamptz DEFAULT now()
+);
+ALTER TABLE portfolio_items DISABLE ROW LEVEL SECURITY;
+-- If table already exists, add the title column:
+ALTER TABLE portfolio_items ADD COLUMN IF NOT EXISTS title text;</pre>
+    </div>
+    <button onclick="loadPortfolioItems().then(renderPortfolioTab)" class="btn-gold" style="padding:9px 20px;border-radius:6px;font-size:11px">↺ Retry After Running SQL</button>
+  </div>` : '';
 
-  _renderOrdersTable();
+  document.getElementById('tabContent').innerHTML = `
+  <div style="margin-bottom:28px">
+    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Portfolio Content</span></h2>
+    <p style="color:rgba(255,255,255,.4);font-size:13px">Manage content for About Us, Specialities, Achievements &amp; Future Goals sections</p>
+  </div>
+
+  ${dbAlert}
+
+  <!-- Upload Form -->
+  <div class="card" style="margin-bottom:24px">
+    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">ADD NEW PORTFOLIO ITEM</h3>
+
+    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+
+      <!-- Image Upload -->
+      <div style="grid-column:1/-1">
+        <label class="label">Upload Image(s) * <span style="color:rgba(255,255,255,.3);font-size:9px">(select multiple — all become one card with a slider)</span></label>
+        <div class="upload-zone" id="portfolioUploadZone" onclick="document.getElementById('portfolioImgFile').click()"
+             ondragover="event.preventDefault();this.classList.add('dragover')"
+             ondragleave="this.classList.remove('dragover')"
+             ondrop="handlePortfolioDrop(event)">
+          <div id="portfolioPreviewWrap">
+            <div style="font-size:40px;margin-bottom:10px">📷</div>
+            <p class="cinzel" style="font-size:11px;color:#C9A020;letter-spacing:1px;margin-bottom:4px">CLICK OR DRAG TO UPLOAD IMAGES</p>
+            <p style="font-size:12px;color:rgba(255,255,255,.3)">Select one or multiple images · JPG, PNG, WEBP · Max 10MB each</p>
+          </div>
+          <div id="portfolioUploadProgress" style="display:none;margin-top:12px">
+            <div class="progress-bar"><div class="progress-fill" id="portfolioProgressFill" style="width:0%"></div></div>
+            <p style="font-size:11px;color:#C9A020;margin-top:6px" id="portfolioUploadStatus">Uploading...</p>
+          </div>
+        </div>
+        <input type="file" id="portfolioImgFile" accept="image/*" multiple style="display:none" onchange="handlePortfolioFileSelect(this)"/>
+      </div>
+
+      <!-- Category Select -->
+      <div>
+        <label class="label">Section / Category *</label>
+        <select class="select-field" id="pCategory">
+          <option value="" disabled selected>Select a section…</option>
+          ${catOptions}
+        </select>
+      </div>
+
+      <!-- Title -->
+      <div>
+        <label class="label">Title *</label>
+        <input class="input-field" id="pTitle" type="text" placeholder="e.g. Premium Quality Fabrics"/>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="label">Description</label>
+        <textarea class="input-field" id="pDescription" rows="3" placeholder="Describe this item in detail…"></textarea>
+      </div>
+
+    </div>
+
+    <button class="btn-gold" id="savePortfolioBtn" onclick="savePortfolioItem()" style="padding:13px 36px;border-radius:8px;font-size:12px">✅ Save Portfolio Item</button>
+  </div>
+
+  <!-- Existing Items grouped by section -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;letter-spacing:1px">CURRENT PORTFOLIO ITEMS (${totalItems})</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap" id="catFilterBtns">
+        <button onclick="filterPortfolio('all')" class="cat-filter-btn active" data-cat="all" style="padding:5px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.15);color:#E8CC6A;font-family:'Cinzel',serif;font-size:10px;cursor:pointer;letter-spacing:.5px">All</button>
+        ${PORTFOLIO_CATEGORIES.map(c => `<button onclick="filterPortfolio('${c.key}')" class="cat-filter-btn" data-cat="${c.key}" style="padding:5px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:transparent;color:rgba(255,255,255,.5);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;letter-spacing:.5px">${c.label}</button>`).join('')}
+      </div>
+    </div>
+    <div id="portfolioItemsList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px" class="pitem-grid">
+      ${portfolioItems.length === 0
+        ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No portfolio items yet. Add your first item above.</p>'
+        : portfolioItems.map(p => portfolioItemCardHTML(p)).join('')}
+    </div>
+  </div>`;
 }
 
-function _setPayFilter(val) { _ordersPayFilter = val; _renderOrdersUI(); }
+function toggleDbSetup() {
+  const el = document.getElementById('dbSetupContent');
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+function copySql() {
+  const text = document.getElementById('setupSql').textContent;
+  navigator.clipboard.writeText(text).then(() => notify('SQL copied to clipboard!', 'success'));
+}
 
-function _renderOrdersTable() {
-  const wrap = document.getElementById('ordersTableWrap');
-  if (!wrap) return;
-  const list = getFilteredOrders();
+function getCatInfo(key) {
+  return PORTFOLIO_CATEGORIES.find(c => c.key === key) || { label: key, color: '#9CA3AF' };
+}
 
-  if (list.length === 0) {
-    wrap.innerHTML = '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;font-family:\'Cinzel\',serif;font-size:13px">' + (orders.length === 0 ? '📦 No orders yet.' : '🔍 No orders match your search.') + '</p>';
+function parseUrls(item) {
+  if (item.image_urls) {
+    try {
+      const arr = Array.isArray(item.image_urls) ? item.image_urls : JSON.parse(item.image_urls);
+      if (arr && arr.length > 0) return arr;
+    } catch(e) {}
+  }
+  if (item.image_url) return [item.image_url];
+  return [];
+}
+
+function portfolioItemCardHTML(item) {
+  const images = parseUrls(item);
+  const hasMultiple = images.length > 1;
+  const catInfo = getCatInfo(item.category);
+  const cardId = 'pitem-' + item.id;
+
+  // ── IMAGE SECTION ──
+  let imgSection = '';
+  if (images.length === 0) {
+    imgSection = `<div style="height:200px;background:linear-gradient(135deg,#1a0535,#3B0764);display:flex;align-items:center;justify-content:center"><span style="font-size:44px;opacity:.35">🖼️</span></div>`;
+  } else if (hasMultiple) {
+    const slidesHTML = images.map(url =>
+      `<div class="pitem-slide"><img src="${url}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity='.2'"/></div>`
+    ).join('');
+    const dotsHTML = images.map((_, i) =>
+      `<button class="pitem-dot${i === 0 ? ' active' : ''}" onclick="movePitemSlide('${cardId}',${i},true)"></button>`
+    ).join('');
+    imgSection = `<div class="pitem-slider" id="${cardId}" style="height:200px">
+      <div class="pitem-track" style="display:flex;height:100%">${slidesHTML}</div>
+      <button class="pitem-arrow" onclick="movePitemSlide('${cardId}',-1,false)" style="left:6px">‹</button>
+      <button class="pitem-arrow" onclick="movePitemSlide('${cardId}',1,false)" style="right:6px">›</button>
+      <div class="pitem-dots">${dotsHTML}</div>
+    </div>`;
+  } else {
+    imgSection = `<div style="height:200px;overflow:hidden"><img src="${images[0]}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.opacity='.2'"/></div>`;
+  }
+
+  const countBadge = hasMultiple ? `<span style="background:rgba(0,0,0,.55);color:#E8CC6A;font-size:9px;padding:3px 8px;border-radius:10px;font-family:'Cinzel',serif;letter-spacing:.5px">${images.length} photos</span>` : '';
+
+  // ── CARD LAYOUT: Image → Category badge → Title → Description ──
+  return `<div class="pitem-card" id="picard-${item.id}" style="display:flex;flex-direction:column">
+
+    <!-- Image with overlaid category badge -->
+    <div style="position:relative;flex-shrink:0">
+      ${imgSection}
+      <div style="position:absolute;top:10px;left:10px;display:flex;gap:6px;align-items:center;z-index:5">
+        <span class="category-badge" style="background:${catInfo.color}33;color:${catInfo.color};border:1px solid ${catInfo.color}55;backdrop-filter:blur(4px)">${catInfo.label}</span>
+        ${countBadge}
+      </div>
+    </div>
+
+    <!-- Title + Description body -->
+    <div style="padding:16px 16px 14px;flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(212,175,55,.12)">
+
+      <!-- Title -->
+      <h3 style="font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:#E8CC6A;letter-spacing:.8px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+        ${item.title || '<span style="color:rgba(212,175,55,.3);font-weight:400;font-style:italic">No title</span>'}
+      </h3>
+
+      <!-- Thin gold divider -->
+      <div style="height:1px;background:linear-gradient(90deg,rgba(212,175,55,.4),transparent)"></div>
+
+      <!-- Description -->
+      <p style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.65;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical">
+        ${item.description || '<span style="color:rgba(255,255,255,.2);font-style:italic">No description added</span>'}
+      </p>
+
+      <!-- Footer row -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+        <span style="font-size:9px;color:rgba(255,255,255,.2);font-family:'Cinzel',serif;letter-spacing:.5px">
+          ${item.created_at ? new Date(item.created_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : ''}
+        </span>
+        <button onclick="delPortfolioItem('${item.id}')" class="btn-danger" style="padding:5px 12px;font-size:10px;border-radius:6px">🗑 Delete</button>
+      </div>
+    </div>
+
+  </div>`;
+}
+
+// ── FILTER ──
+function filterPortfolio(cat) {
+  // Update button styles
+  document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+    const isActive = btn.dataset.cat === cat;
+    btn.style.background = isActive ? 'rgba(212,175,55,.15)' : 'transparent';
+    btn.style.color = isActive ? '#E8CC6A' : 'rgba(255,255,255,.5)';
+    btn.style.borderColor = isActive ? 'rgba(212,175,55,.4)' : 'rgba(212,175,55,.2)';
+  });
+
+  const list = document.getElementById('portfolioItemsList');
+  if (!list) return;
+  const items = cat === 'all' ? portfolioItems : portfolioItems.filter(p => p.category === cat);
+  list.innerHTML = items.length === 0
+    ? `<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No items in this section yet.</p>`
+    : items.map(p => portfolioItemCardHTML(p)).join('');
+}
+
+// ── PORTFOLIO UPLOAD ──
+async function handlePortfolioFileSelect(input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+  await uploadPortfolioFiles(files);
+}
+function handlePortfolioDrop(e) {
+  e.preventDefault();
+  document.getElementById('portfolioUploadZone').classList.remove('dragover');
+  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+  if (!files.length) { notify('Please drop image files.', 'error'); return; }
+  uploadPortfolioFiles(files);
+}
+async function uploadPortfolioFiles(files) {
+  const prog = document.getElementById('portfolioUploadProgress');
+  const fill = document.getElementById('portfolioProgressFill');
+  const status = document.getElementById('portfolioUploadStatus');
+  const prevWrap = document.getElementById('portfolioPreviewWrap');
+  prog.style.display = 'block'; prevWrap.style.opacity = '0.4';
+  pendingPortfolioUrls = [];
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    if (file.size > 10 * 1024 * 1024) { notify(`${file.name} too large (max 10MB), skipped.`, 'error'); continue; }
+    fill.style.width = Math.round(((i + 0.5) / files.length) * 100) + '%';
+    status.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}`;
+    const ext = file.name.split('.').pop().toLowerCase();
+    const fileName = `portfolio/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const { data, error } = await sb.storage.from(STORAGE_BUCKET).upload(fileName, file, { cacheControl: '3600', upsert: true });
+    if (error) { notify(`Failed: ${file.name} — ${error.message}`, 'error'); continue; }
+    const { data: urlData } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(fileName);
+    pendingPortfolioUrls.push(urlData.publicUrl);
+  }
+  fill.style.width = '100%';
+  status.textContent = `✅ ${pendingPortfolioUrls.length} of ${files.length} uploaded!`;
+  prevWrap.style.opacity = '1';
+  if (pendingPortfolioUrls.length > 0) {
+    prevWrap.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px">
+      ${pendingPortfolioUrls.map(url => `<img src="${url}" style="height:70px;width:120px;object-fit:cover;border-radius:6px;border:1px solid rgba(212,175,55,.4)"/>`).join('')}
+    </div><p style="color:#4ade80;font-size:12px">${pendingPortfolioUrls.length} image(s) ready — choose category and save below</p>`;
+    notify(`✅ ${pendingPortfolioUrls.length} image(s) ready!`, 'success');
+  }
+  setTimeout(() => { prog.style.display = 'none'; fill.style.width = '0%'; }, 2000);
+}
+
+async function savePortfolioItem() {
+  if (!pendingPortfolioUrls.length) { notify('Please upload at least one image first.', 'error'); return; }
+  const category = document.getElementById('pCategory').value;
+  if (!category) { notify('Please select a section/category.', 'error'); return; }
+  const title = (document.getElementById('pTitle').value || '').trim() || null;
+  if (!title) { notify('Please enter a title for this item.', 'error'); return; }
+  const description = (document.getElementById('pDescription').value || '').trim() || null;
+
+  const btn = document.getElementById('savePortfolioBtn');
+  btn.disabled = true; btn.innerHTML = '<span class="spinner-sm"></span> Saving...';
+
+  const row = {
+    image_urls: JSON.stringify(pendingPortfolioUrls),
+    category,
+    title,
+    description,
+    sort_order: portfolioItems.filter(p => p.category === category).length,
+  };
+
+  const { error } = await sb.from('portfolio_items').insert([row]);
+  if (error) {
+    notify('Error saving item: ' + error.message, 'error');
+    btn.disabled = false; btn.textContent = '✅ Save Portfolio Item';
     return;
   }
 
-  wrap.innerHTML = `
-  <div class="table-scroll" style="border-radius:0;border:none">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:40px">#</th>
-          <th>Receiver</th>
-          <th>Phone</th>
-          <th>Location</th>
-          <th>Address</th>
-          <th>Items</th>
-          <th>Amount</th>
-          <th>Payment</th>
-          <th>Status</th>
-          <th>Date</th>
-          <th style="width:100px">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${list.map((o, i) => {
-          let cartItems = [];
-          try { cartItems = JSON.parse(o.cart_items || '[]'); } catch(e) { cartItems = []; }
-          const orderNum = orders.indexOf(o) + 1;
-          return `
-          <tr id="orow-${o.id}">
-            <td class="cinzel" style="color:#C9A020;font-size:11px">#${orders.length - orders.indexOf(o)}</td>
-            <td style="font-weight:600;color:#e2e8f0;white-space:nowrap">${o.receiver_name||'—'}</td>
-            <td><a href="tel:${o.phone||''}" style="color:#a78bfa;text-decoration:none">${o.phone||'—'}</a></td>
-            <td style="font-size:12px;color:rgba(255,255,255,.6);white-space:nowrap">${[o.city,o.state,o.pin_code].filter(Boolean).join(', ')}</td>
-            <td style="font-size:12px;max-width:160px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${(o.full_address||'').replace(/"/g,'&quot;')}">${o.full_address||'—'}</td>
-            <td style="position:relative">
-              ${cartItems.length > 0
-                ? `<button class="cart-items-btn" onclick="toggleCartPopup(this,'${o.id}')">🛒 ${cartItems.length} item${cartItems.length>1?'s':''}</button>
-                   <div class="cart-items-popup" id="cpop-${o.id}">
-                     ${cartItems.map(it=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(212,175,55,.1);gap:12px">
-                       <div style="flex:1;min-width:0">
-                         ${it.product_no ? `<div style="font-size:9px;color:#D4AF37;font-family:'Cinzel',serif;letter-spacing:.5px;margin-bottom:2px">${it.product_no}</div>` : ''}
-                         <span style="font-size:12px;color:#e2e8f0">${it.name||'?'}</span>
-                       </div>
-                       <span style="font-size:11px;color:rgba(255,255,255,.4)">${it.selectedSize||''} ×${it.qty||1}</span>
-                       <span class="cinzel" style="font-size:12px;color:#C9A020;white-space:nowrap">₹${Number(it.price||0).toFixed(0)}</span>
-                     </div>`).join('')}
-                     <div style="margin-top:8px;text-align:right;font-family:'Cinzel',serif;font-size:12px;color:#E8CC6A">Total: ₹${Number(o.total_amount||0).toFixed(2)}</div>
-                   </div>`
-                : '<span style="color:rgba(255,255,255,.25);font-size:12px">—</span>'}
-            </td>
-            <td class="cinzel" style="font-weight:700;color:#C9A020;white-space:nowrap">&#8377;${Number(o.total_amount||0).toFixed(2)}</td>
-            <td><span style="background:${payColor(o.payment_status)}22;color:${payColor(o.payment_status)};border:1px solid ${payColor(o.payment_status)}44;padding:3px 9px;border-radius:20px;font-size:11px;font-family:'Cinzel',serif;white-space:nowrap">${o.payment_status||'Pending'}</span></td>
-            <td>
-              <select onchange="updateOrderStatus('${o.id}',this.value,'order_status')" style="background:#1a1030;border:1px solid rgba(212,175,55,.2);color:${statusColor(o.order_status)};border-radius:4px;padding:4px 6px;font-size:11px;cursor:pointer;font-family:'Cinzel',serif">
-                ${['New','Processing','Shipped','Delivered','Cancelled'].map(s=>`<option value="${s}" ${o.order_status===s?'selected':''}>${s}</option>`).join('')}
-              </select>
-            </td>
-            <td style="font-size:11px;color:rgba(255,255,255,.4);white-space:nowrap">${o.created_at ? new Date(o.created_at).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) : '—'}</td>
-            <td>
-              <button class="order-del-btn" onclick="confirmDeleteOrder('${o.id}','${(o.receiver_name||'this order').replace(/'/g,'\\\'')}')" title="Delete Order">🗑</button>
-            </td>
-          </tr>`;
-        }).join('')}
-      </tbody>
-    </table>
-  </div>`;
+  notify('✅ Portfolio item saved!', 'success');
+  pendingPortfolioUrls = [];
 
-  // Close cart popups on outside click
-  document.addEventListener('click', _closeCartPopups, {once:true});
+  // Reset form
+  document.getElementById('pCategory').value = '';
+  document.getElementById('pTitle').value = '';
+  document.getElementById('pDescription').value = '';
+  document.getElementById('portfolioPreviewWrap').innerHTML = `<div style="font-size:40px;margin-bottom:10px">📷</div>
+    <p class="cinzel" style="font-size:11px;color:#C9A020;letter-spacing:1px;margin-bottom:4px">CLICK OR DRAG TO UPLOAD IMAGES</p>
+    <p style="font-size:12px;color:rgba(255,255,255,.3)">Select one or multiple images · JPG, PNG, WEBP · Max 10MB each</p>`;
+  document.getElementById('portfolioImgFile').value = '';
+  btn.disabled = false; btn.textContent = '✅ Save Portfolio Item';
+
+  await loadPortfolioItems();
+  const list = document.getElementById('portfolioItemsList');
+  if (list) list.innerHTML = portfolioItems.length === 0
+    ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No items yet.</p>'
+    : portfolioItems.map(p => portfolioItemCardHTML(p)).join('');
+
+  // Update count header
+  const countEl = document.querySelector('#tabContent .cinzel');
+  if (countEl && countEl.textContent.includes('CURRENT')) countEl.textContent = `CURRENT PORTFOLIO ITEMS (${portfolioItems.length})`;
 }
 
-function toggleCartPopup(btn, orderId) {
-  const pop = document.getElementById('cpop-' + orderId);
-  if (!pop) return;
-  const isOpen = pop.classList.contains('open');
-  // Close all first
-  document.querySelectorAll('.cart-items-popup.open').forEach(p => p.classList.remove('open'));
-  if (!isOpen) { pop.classList.add('open'); }
+async function delPortfolioItem(id) {
+  if (!confirm('Delete this portfolio item? This cannot be undone.')) return;
+  const { error } = await sb.from('portfolio_items').delete().eq('id', id);
+  if (error) { notify('Error: ' + error.message, 'error'); return; }
+  notify('🗑 Item deleted.', 'info');
+  await loadPortfolioItems();
+  const list = document.getElementById('portfolioItemsList');
+  if (list) list.innerHTML = portfolioItems.length === 0
+    ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No portfolio items yet.</p>'
+    : portfolioItems.map(p => portfolioItemCardHTML(p)).join('');
 }
 
-function _closeCartPopups(e) {
-  if (!e.target.closest('.cart-items-btn') && !e.target.closest('.cart-items-popup')) {
-    document.querySelectorAll('.cart-items-popup.open').forEach(p => p.classList.remove('open'));
-  }
-}
-
-// ── CONFIRM MODAL (reusable) ──
-let _confirmCallback = null;
-
-function showConfirm({ icon='🗑', title='Confirm', msg='Are you sure?', okLabel='Confirm', okColor='#f87171', onOk }) {
-  document.getElementById('confirmIcon').textContent = icon;
-  document.getElementById('confirmTitle').textContent = title;
-  document.getElementById('confirmMsg').textContent = msg;
-  const okBtn = document.getElementById('confirmOk');
-  okBtn.textContent = okLabel;
-  okBtn.style.color = okColor;
-  okBtn.style.borderColor = okColor + '66';
-  okBtn.style.background = okColor + '22';
-  _confirmCallback = onOk;
-  okBtn.onclick = () => { closeConfirm(); if (_confirmCallback) _confirmCallback(); };
-  document.getElementById('confirmModal').classList.add('open');
-}
-
-function closeConfirm() {
-  document.getElementById('confirmModal').classList.remove('open');
-  _confirmCallback = null;
-}
-
-// Close modal on backdrop click
-document.getElementById('confirmModal').addEventListener('click', e => {
-  if (e.target === document.getElementById('confirmModal')) closeConfirm();
-});
-
-// ── DELETE ORDER ──
-function confirmDeleteOrder(id, name) {
-  showConfirm({
-    icon: '🗑',
-    title: 'DELETE ORDER',
-    msg: `Delete order from "${name}"? This permanently removes it from the database and cannot be undone.`,
-    okLabel: '🗑 Delete',
-    okColor: '#f87171',
-    onOk: () => deleteOrder(id),
-  });
-}
-
-async function deleteOrder(id) {
-  if (!id) { notify('❌ Invalid order ID.', 'error'); return; }
-
-  const row = document.getElementById('orow-' + id);
-
-  // Show loading state on the delete button instead of instant fade
-  const delBtn = row ? row.querySelector('.order-del-btn') : null;
-  if (delBtn) { delBtn.disabled = true; delBtn.textContent = '⏳'; }
-
-  try {
-    // Step 1: verify the row actually exists in our local state
-    const exists = orders.some(o => o.id === id);
-    if (!exists) {
-      notify('⚠️ Order not found in local state — refreshing...', 'error');
-      await loadOrders();
-      _renderOrdersTable();
-      return;
-    }
-
-    // Step 2: delete with .select() so Supabase returns affected rows
-    // Without .select(), RLS blocks are SILENT — no error, just 0 rows deleted
-    const { data, error } = await sb
-      .from('orders')
-      .delete()
-      .eq('id', id)
-      .select('id');   // ← critical: forces response even when RLS blocks
-
-    // Step 3: handle Supabase error
-    if (error) {
-      console.error('[deleteOrder] Supabase error:', error);
-      notify('❌ Delete failed: ' + (error.message || JSON.stringify(error)), 'error');
-      if (delBtn) { delBtn.disabled = false; delBtn.textContent = '🗑'; }
-      return;
-    }
-
-    // Step 4: check if any row was actually deleted
-    // If RLS blocks silently, data = [] with no error
-    if (!data || data.length === 0) {
-      console.warn('[deleteOrder] 0 rows deleted — RLS is silently blocking. Run: ALTER TABLE orders DISABLE ROW LEVEL SECURITY;');
-      notify('❌ Delete blocked by Supabase RLS policy. Go to ⚙️ DB Setup → run the Orders Fix SQL.', 'error');
-      if (delBtn) { delBtn.disabled = false; delBtn.textContent = '🗑'; }
-      return;
-    }
-
-    // Step 5: SUCCESS — animate row out, update state
-    if (row) {
-      row.style.transition = 'opacity .25s, transform .25s';
-      row.style.opacity = '0';
-      row.style.transform = 'translateX(12px)';
-    }
-
-    orders = orders.filter(o => o.id !== id);
-    notify('🗑 Order deleted successfully.', 'success');
-
-    // Update sidebar badge
-    const badge = document.getElementById('ordersCountBadge');
-    if (badge) {
-      const newCount = orders.filter(o => o.order_status === 'New').length;
-      badge.textContent = newCount;
-      badge.style.display = newCount > 0 ? 'inline' : 'none';
-    }
-
-    // Re-render table after animation (keeps search/filter state)
-    setTimeout(_renderOrdersTable, 300);
-
-  } catch (e) {
-    console.error('[deleteOrder] Exception:', e);
-    notify('❌ Exception: ' + e.message, 'error');
-    if (delBtn) { delBtn.disabled = false; delBtn.textContent = '🗑'; }
-  }
-}
-
-async function updateOrderStatus(id, value, field) {
-  const update = {};
-  update[field] = value;
-  const { error } = await sb.from('orders').update(update).eq('id', id);
-  if (error) { notify('Error updating order: ' + error.message, 'error'); return; }
-  // Update local state without full reload
-  const o = orders.find(x => x.id === id);
-  if (o) o[field] = value;
-  notify('✅ Order status updated!', 'success');
-  // Refresh badge
-  const badge = document.getElementById('ordersCountBadge');
-  if (badge) {
-    const newCount = orders.filter(o => o.order_status === 'New').length;
-    badge.textContent = newCount;
-    badge.style.display = newCount > 0 ? 'inline' : 'none';
-  }
-}
-
-// ── THAAN PASSWORD MANAGEMENT ──
-async function renderThaanPwd() {
-  const el = document.getElementById('tabContent');
-  el.innerHTML = `
-  <div style="margin-bottom:28px">
-    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Thaan Section Password</span></h2>
-    <p style="color:rgba(255,255,255,.4);font-size:13px">Manage the access password for the Thaan section on the user-facing storefront.</p>
-  </div>
-  <div class="card" style="max-width:520px">
-    <div id="thaanPwdStatus" style="margin-bottom:18px;font-size:13px;color:rgba(255,255,255,.5)">
-      <span class="spinner-sm"></span> Loading current password...
-    </div>
-    <div style="margin-bottom:18px">
-      <label class="label">Current Password (from database)</label>
-      <div id="currentPwdDisplay" style="background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.15);border-radius:8px;padding:11px 14px;font-family:monospace;font-size:14px;color:#E8CC6A;letter-spacing:2px;display:flex;align-items:center;justify-content:space-between">
-        <span id="currentPwdValue" style="filter:blur(4px);user-select:none">••••••••</span>
-        <button onclick="togglePwdVisibility()" style="background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:12px;font-family:'Cinzel',serif;letter-spacing:.5px" id="togglePwdBtn">SHOW</button>
-      </div>
-    </div>
-    <div style="margin-bottom:18px">
-      <label class="label">Set New Password</label>
-      <input id="newThaanPwd" class="input-field" type="text" placeholder="Enter new password" style="letter-spacing:1px"/>
-    </div>
-    <div style="margin-bottom:18px">
-      <label class="label">Confirm New Password</label>
-      <input id="confirmThaanPwd" class="input-field" type="text" placeholder="Re-enter new password" style="letter-spacing:1px"/>
-    </div>
-    <button class="btn-gold" onclick="saveThaanPassword()" style="width:100%;padding:13px;border-radius:8px;font-size:12px;letter-spacing:2px" id="savePwdBtn">🔑 UPDATE PASSWORD</button>
-    <p style="margin-top:14px;font-size:11px;color:rgba(255,255,255,.3);text-align:center;font-family:'Cinzel',serif;letter-spacing:.5px">Password is stored in Supabase and fetched live by the storefront</p>
-  </div>
-  <div class="card" style="max-width:520px;margin-top:20px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:4px;letter-spacing:1px">SQL — Create app_settings Table</h3>
-    <p style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:16px">Run this once in <b style="color:#C9A020">Supabase → SQL Editor</b> to create the settings table:</p>
-    <div style="background:#0a0a1a;border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:16px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:2;position:relative">
-      <button onclick="copySQL('sqlThaanTable')" style="position:absolute;top:10px;right:10px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <pre id="sqlThaanTable" style="white-space:pre-wrap;margin:0;color:#a5f3fc">-- Create app_settings table for dynamic config
-CREATE TABLE IF NOT EXISTS app_settings (
-  key text PRIMARY KEY,
-  value text NOT NULL,
-  updated_at timestamptz DEFAULT now()
-);
-
--- Disable RLS so anon key can read
-ALTER TABLE app_settings DISABLE ROW LEVEL SECURITY;
-
--- Insert default Thaan password (change 'libas2024' to your desired password)
-INSERT INTO app_settings (key, value)
-VALUES ('thaan_password', 'libas2024')
-ON CONFLICT (key) DO NOTHING;</pre>
-    </div>
-  </div>`;
-
-  // Load current password from DB
-  await _loadCurrentThaanPwd();
-}
-
-let _thaanPwdCurrent = '';
-let _thaanPwdVisible = false;
-
-async function _loadCurrentThaanPwd() {
-  const statusEl = document.getElementById('thaanPwdStatus');
-  try {
-    const { data, error } = await sb.from('app_settings').select('value').eq('key','thaan_password').single();
-    if (error) throw error;
-    _thaanPwdCurrent = data.value;
-    if (statusEl) statusEl.innerHTML = `<span style="color:#86efac">✅ Password loaded from database</span>`;
-    const valEl = document.getElementById('currentPwdValue');
-    if (valEl) { valEl.setAttribute('data-pwd', _thaanPwdCurrent); }
-  } catch(e) {
-    if (statusEl) statusEl.innerHTML = `<span style="color:#f87171">⚠️ Could not load password — run the SQL above first, then refresh this tab.</span>`;
-  }
-}
-
-function togglePwdVisibility() {
-  _thaanPwdVisible = !_thaanPwdVisible;
-  const valEl = document.getElementById('currentPwdValue');
-  const btn   = document.getElementById('togglePwdBtn');
-  if (!valEl) return;
-  if (_thaanPwdVisible) {
-    valEl.style.filter = 'none';
-    valEl.textContent  = _thaanPwdCurrent || '(not set)';
-    if (btn) btn.textContent = 'HIDE';
+// ── ADMIN PORTFOLIO ITEM SLIDER ──
+function movePitemSlide(cardId, valOrDir, isAbsolute) {
+  const el = document.getElementById(cardId);
+  if (!el) return;
+  const track = el.querySelector('.pitem-track');
+  const count = track.children.length;
+  if (isAbsolute) {
+    pitemSlideIdx[cardId] = valOrDir;
   } else {
-    valEl.style.filter = 'blur(4px)';
-    valEl.textContent  = '••••••••';
-    if (btn) btn.textContent = 'SHOW';
+    pitemSlideIdx[cardId] = ((pitemSlideIdx[cardId] || 0) + valOrDir + count) % count;
   }
-}
-
-async function saveThaanPassword() {
-  const newPwd  = (document.getElementById('newThaanPwd')?.value || '').trim();
-  const confPwd = (document.getElementById('confirmThaanPwd')?.value || '').trim();
-  if (!newPwd)             { notify('Please enter a new password.', 'error'); return; }
-  if (newPwd.length < 4)   { notify('Password must be at least 4 characters.', 'error'); return; }
-  if (newPwd !== confPwd)  { notify('Passwords do not match.', 'error'); return; }
-
-  const btn = document.getElementById('savePwdBtn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Saving...'; }
-
-  try {
-    const { error } = await sb.from('app_settings')
-      .upsert({ key: 'thaan_password', value: newPwd, updated_at: new Date().toISOString() }, { onConflict: 'key' });
-    if (error) throw error;
-    _thaanPwdCurrent = newPwd;
-    notify('🔑 Thaan password updated successfully!', 'success');
-    document.getElementById('newThaanPwd').value = '';
-    document.getElementById('confirmThaanPwd').value = '';
-    // Refresh display
-    const valEl = document.getElementById('currentPwdValue');
-    if (valEl) {
-      valEl.setAttribute('data-pwd', newPwd);
-      if (_thaanPwdVisible) { valEl.textContent = newPwd; }
-    }
-    const statusEl = document.getElementById('thaanPwdStatus');
-    if (statusEl) statusEl.innerHTML = `<span style="color:#86efac">✅ Password updated — storefront will use this immediately.</span>`;
-  } catch(e) {
-    notify('Error saving password: ' + e.message, 'error');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = '🔑 UPDATE PASSWORD'; }
-  }
+  const i = pitemSlideIdx[cardId];
+  track.style.transform = `translateX(-${i * 100}%)`;
+  el.querySelectorAll('.pitem-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
 }
 
 // ── NOTIFY ──
 function notify(msg, type = 'info') {
-  const cols = { success: ['#14532d','#86efac','#22c55e'], error: ['#450a0a','#f87171','#ef4444'], info: ['#1c1a36','#a78bfa','#7c3aed'] };
+  const cols = { success: ['#14532d', '#86efac', '#22c55e'], error: ['#450a0a', '#f87171', '#ef4444'], info: ['#1c1a36', '#a78bfa', '#7c3aed'] };
   const [bg, text, border] = cols[type] || cols.info;
   const el = document.createElement('div');
   el.className = 'notify';
@@ -1676,7 +741,6 @@ function notify(msg, type = 'info') {
 }
 
 // ── INIT ──
-initSelections();
 init();
 </script>
 </body>
