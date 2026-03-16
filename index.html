@@ -4,744 +4,685 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Libas Admin Panel</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧵</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0} 
+/* CSS Reset & Variables */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Lato',sans-serif;background:#0f0a1e;color:#e2e8f0;min-height:100vh}
+body{font-family:'Lato',sans-serif;background:#0f0a1e;color:#e2e8f0;min-height:100vh;overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:#1a1030}
 ::-webkit-scrollbar-thumb{background:#D4AF37;border-radius:3px}
 .cinzel{font-family:'Cinzel',serif}
 
+/* UI Components */
 @keyframes shimmer{0%{background-position:-400% center}100%{background-position:400% center}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 .gold-text{background:linear-gradient(90deg,#C9A020,#E8CC6A,#C9A020);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
-
-.spinner{width:28px;height:28px;border:3px solid rgba(212,175,55,.2);border-top-color:#D4AF37;border-radius:50%;animation:spin .8s linear infinite}
 .spinner-sm{width:18px;height:18px;border:2px solid rgba(212,175,55,.2);border-top-color:#D4AF37;border-radius:50%;animation:spin .8s linear infinite;display:inline-block}
 
-.btn-gold{background:linear-gradient(135deg,#C9A020,#E8CC6A,#C9A020);background-size:200% auto;color:#180626;font-family:'Cinzel',serif;font-weight:700;letter-spacing:1.5px;border:none;cursor:pointer;transition:all .3s;font-size:12px}
+.btn-gold{background:linear-gradient(135deg,#C9A020,#E8CC6A,#C9A020);background-size:200% auto;color:#180626;font-family:'Cinzel',serif;font-weight:700;letter-spacing:1.5px;border:none;cursor:pointer;transition:all .3s;font-size:12px;padding:12px 24px;border-radius:8px}
 .btn-gold:hover{background-position:right center;box-shadow:0 6px 24px rgba(212,175,55,.4);transform:translateY(-1px)}
-.btn-gold:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-gold:disabled{opacity:0.5;cursor:not-allowed}
 
-.btn-danger{background:rgba(220,38,38,.15);color:#f87171;border:1px solid rgba(220,38,38,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;transition:all .2s;padding:6px 12px;border-radius:6px}
-.btn-danger:hover{background:rgba(220,38,38,.3)}
-
-.btn-outline{background:transparent;color:#D4AF37;font-family:'Cinzel',serif;font-weight:600;letter-spacing:1px;border:1px solid rgba(212,175,55,.5);cursor:pointer;transition:all .3s;font-size:12px}
-.btn-outline:hover{background:rgba(212,175,55,.1)}
-
-.input-field{width:100%;padding:10px 14px;border:1px solid rgba(212,175,55,.2);border-radius:8px;background:rgba(255,255,255,.05);font-family:'Lato',sans-serif;font-size:14px;color:#e2e8f0;outline:none;transition:border-color .2s}
-.input-field:focus{border-color:#7C3AED;background:rgba(255,255,255,.08)}
-.input-field::placeholder{color:rgba(255,255,255,.3)}
-textarea.input-field{resize:vertical}
-
-.select-field{width:100%;padding:10px 14px;border:1px solid rgba(212,175,55,.2);border-radius:8px;background:rgba(15,10,30,.9);font-family:'Lato',sans-serif;font-size:14px;color:#e2e8f0;outline:none;cursor:pointer}
-.select-field:focus{border-color:#7C3AED}
+.btn-danger{background:rgba(220,38,38,.15);color:#f87171;border:1px solid rgba(220,38,38,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;padding:8px 12px;border-radius:6px}
+.btn-edit{background:rgba(124,58,237,.15);color:#a78bfa;border:1px solid rgba(124,58,237,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;padding:8px 12px;border-radius:6px}
+.btn-outline{background:transparent;color:#D4AF37;font-family:'Cinzel',serif;font-weight:600;border:1px solid rgba(212,175,55,.5);cursor:pointer;transition:all .2s;font-size:11px;padding:8px 16px;border-radius:6px}
 
 .card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;padding:24px}
+.input-field, .select-field{width:100%;padding:11px 14px;border:1px solid rgba(212,175,55,.2);border-radius:8px;background:rgba(255,255,255,.05);font-size:14px;color:#e2e8f0;outline:none}
+.label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:#C9A020;display:block;margin-bottom:8px;text-transform:uppercase}
+.chip{padding:6px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:transparent;color:#e2e8f0;cursor:pointer;font-size:12px;transition:all 0.2s}
+.chip.selected{background:rgba(124,58,237,0.2);border-color:#D4AF37;color:#E8CC6A}
+.select-field option {
+    background-color: #160d2e; /* Matches your modal/dark theme */
+    color: #e2e8f0;            /* Keeps the text light and visible */
+}
+/* Layout */
+.sidebar{width:220px;background:rgba(255,255,255,.03);border-right:1px solid rgba(212,175,55,.1);min-height:100vh;position:fixed;left:0;top:0;padding-top:80px;z-index:10}
+.sidebar-btn{display:flex;align-items:center;gap:10px;width:100%;padding:14px 20px;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-family:'Cinzel',serif;font-size:11px;border-left:3px solid transparent;text-align:left}
+.sidebar-btn.active{background:rgba(124,58,237,.1);color:#E8CC6A;border-left-color:#D4AF37}
 
-.label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:#C9A020;display:block;margin-bottom:6px;text-transform:uppercase}
+.main-content{margin-left:220px;padding:40px;min-height:100vh}
 
-.notify{position:fixed;top:20px;right:20px;z-index:9999;min-width:260px;padding:14px 18px;border-radius:10px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.5px;box-shadow:0 8px 32px rgba(0,0,0,.5);border:1px solid;animation:fadeUp .3s ease;display:flex;align-items:center;gap:10px}
+/* Tables */
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid rgba(212,175,55,.12);background:rgba(255,255,255,0.01)}
+table{width:100%;border-collapse:collapse}
+thead th{background:rgba(59,7,100,.6);color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px;padding:14px 16px;text-align:left;white-space:nowrap;position:sticky;top:0}
+tbody td{padding:14px 16px;border-bottom:1px solid rgba(212,175,55,.08);font-size:13px;vertical-align:middle}
+.stock-low{color:#f87171;font-weight:700}
 
-.progress-bar{height:3px;background:rgba(212,175,55,.2);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,#C9A020,#E8CC6A);border-radius:3px;transition:width .3s}
+/* Stat Cards */
+.stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;padding:20px;display:flex;align-items:center;gap:15px;transition:transform 0.2s}
+.stat-card:hover{transform:translateY(-2px);border-color:rgba(212,175,55,0.3)}
+.stat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px}
 
-/* Upload drop zone */
-.upload-zone{border:2px dashed rgba(212,175,55,.3);border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(212,175,55,.03)}
-.upload-zone:hover,.upload-zone.dragover{border-color:#D4AF37;background:rgba(212,175,55,.08)}
+/* Modals */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-content{background:#160d2e;border:1px solid rgba(212,175,55,0.4);border-radius:16px;width:50vw;height:50vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 32px 64px rgba(0,0,0,0.8)}
+.modal-header{padding:20px;background:rgba(59, 7, 100, 0.4);border-bottom:1px solid rgba(212,175,55,0.2);display:flex;justify-content:space-between;align-items:center}
+.modal-body{flex:1;padding:30px;overflow-y:auto}
 
-/* Banner card */
-.banner-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.15);border-radius:10px;overflow:hidden;transition:all .2s}
-.banner-card:hover{border-color:rgba(212,175,55,.4)}
+/* Notifications */
+.notify{position:fixed;top:20px;right:20px;z-index:11000;min-width:280px;padding:16px;border-radius:10px;font-family:'Cinzel',serif;font-size:12px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);animation:fadeUp 0.3s ease}
 
-/* Portfolio item card */
-.pitem-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;overflow:hidden;transition:all .2s}
-.pitem-card:hover{border-color:rgba(212,175,55,.35)}
+.progress-bar{height:4px;background:rgba(212,175,55,0.1);border-radius:4px;overflow:hidden;margin:10px 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,#C9A020,#E8CC6A);transition:width 0.3s}
 
-/* Portfolio item image slider */
-.pitem-slider{position:relative;overflow:hidden;height:180px}
-.pitem-track{display:flex;height:100%;transition:transform .35s}
-.pitem-slide{min-width:100%;height:100%;flex-shrink:0}
-.pitem-slide img{width:100%;height:100%;object-fit:cover;display:block}
-.pitem-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:1px solid rgba(212,175,55,.4);color:#E8CC6A;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;z-index:5}
-.pitem-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5}
-.pitem-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:all .2s}
-.pitem-dot.active{background:#D4AF37;width:16px;border-radius:3px}
+.upload-zone{border:2px dashed rgba(212,175,55,.3);border-radius:12px;padding:40px;text-align:center;cursor:pointer;background:rgba(212,175,55,.02);transition:all 0.3s}
+.upload-zone:hover{background:rgba(212,175,55,0.05);border-color:#D4AF37}
+
+/* Confirm Box */
+.confirm-box{background:#1a0535;border:1px solid rgba(212,175,55,0.3);border-radius:14px;padding:32px;width:380px;text-align:center}
+
+/* --- ORIGINAL UI STYLING --- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:#0f0a1e;color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#1a1030}
+::-webkit-scrollbar-thumb{background:#D4AF37;border-radius:3px}
+.cinzel{font-family:'Cinzel',serif}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.gold-text{background:linear-gradient(90deg,#C9A020,#E8CC6A,#C9A020);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.spinner-sm{width:18px;height:18px;border:2px solid rgba(212,175,55,.2);border-top-color:#D4AF37;border-radius:50%;animation:spin .8s linear infinite;display:inline-block}
+
+.btn-gold{background:linear-gradient(135deg,#C9A020,#E8CC6A,#C9A020);color:#180626;font-family:'Cinzel',serif;font-weight:700;border:none;cursor:pointer;transition:all .3s;font-size:12px;padding:12px 24px;border-radius:8px}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(212,175,55,.4)}
+.btn-danger{background:rgba(220,38,38,.15);color:#f87171;border:1px solid rgba(220,38,38,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;padding:8px 12px;border-radius:6px}
+.btn-edit{background:rgba(124,58,237,.15);color:#a78bfa;border:1px solid rgba(124,58,237,.3);font-family:'Cinzel',serif;font-size:11px;cursor:pointer;padding:8px 12px;border-radius:6px}
+.btn-outline{background:transparent;color:#D4AF37;font-family:'Cinzel',serif;font-weight:600;border:1px solid rgba(212,175,55,.5);cursor:pointer;font-size:11px;padding:8px 16px;border-radius:6px}
+
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;padding:24px}
+.input-field, .select-field{width:100%;padding:11px 14px;border:1px solid rgba(212,175,55,.2);border-radius:8px;background:rgba(255,255,255,.05);font-size:14px;color:#e2e8f0;outline:none}
+.label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:#C9A020;display:block;margin-bottom:8px;text-transform:uppercase}
+.chip{padding:6px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:transparent;color:#e2e8f0;cursor:pointer;font-size:12px}
+.chip.selected{background:rgba(124,58,237,0.2);border-color:#D4AF37;color:#E8CC6A}
 
 .sidebar{width:220px;background:rgba(255,255,255,.03);border-right:1px solid rgba(212,175,55,.1);min-height:100vh;position:fixed;left:0;top:0;padding-top:80px;z-index:10}
-.sidebar-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 20px;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;transition:all .2s;border-left:2px solid transparent;text-align:left}
-.sidebar-btn:hover{background:rgba(212,175,55,.06);color:#E8CC6A;border-left-color:rgba(212,175,55,.4)}
-.sidebar-btn.active{background:rgba(124,58,237,.15);color:#E8CC6A;border-left-color:#D4AF37}
+.sidebar-btn{display:flex;align-items:center;gap:10px;width:100%;padding:14px 20px;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-family:'Cinzel',serif;font-size:11px;border-left:3px solid transparent}
+.sidebar-btn.active{background:rgba(124,58,237,.1);color:#E8CC6A;border-left-color:#D4AF37}
 
-.category-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1.5px;font-weight:700}
+.main-content{margin-left:220px;padding:40px;min-height:100vh}
 
-@media(max-width:768px){
-  .sidebar{display:none!important}
-  .main-content{margin-left:0!important;padding:16px!important}
-  #mobileAdminNav{display:block!important}
-  .form-grid{grid-template-columns:1fr!important}
-  .pitem-grid{grid-template-columns:1fr!important}
-  .banner-grid{grid-template-columns:1fr!important}
-}
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid rgba(212,175,55,.12)}
+table{width:100%;border-collapse:collapse}
+thead th{background:rgba(59,7,100,.6);color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px;padding:14px 16px;text-align:left;white-space:nowrap}
+tbody td{padding:14px 16px;border-bottom:1px solid rgba(212,175,55,.08);font-size:13px;vertical-align:middle}
+
+.stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.12);border-radius:12px;padding:20px;display:flex;align-items:center;gap:15px}
+.stat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px}
+
+/* --- THE 50/50 MODAL --- */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-content{background:#160d2e;border:1px solid rgba(212,175,55,0.4);border-radius:16px;width:90vw;height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.modal-header{padding:20px;background:rgba(59, 7, 100, 0.4);border-bottom:1px solid rgba(212,175,55,0.2);display:flex;justify-content:space-between;align-items:center}
+.modal-body{flex:1;padding:30px;overflow-y:auto}
+
+.notify{position:fixed;top:20px;right:20px;z-index:11000;min-width:280px;padding:16px;border-radius:10px;font-family:'Cinzel',serif;font-size:12px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);animation:fadeUp 0.3s ease}
+
+.info-row { display: grid; grid-template-columns: 1fr 2fr; gap: 15px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+.info-label { font-family: 'Cinzel', serif; color: #C9A020; font-size: 10px; text-transform: uppercase; }
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loadingScreen" style="position:fixed;inset:0;background:#0f0a1e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px">
-  <div class="spinner"></div>
-  <p class="cinzel" style="font-size:13px;color:#C9A020;letter-spacing:3px">LIBAS ADMIN</p>
+  <div class="spinner-sm" style="width:40px;height:40px;border-width:4px"></div>
+  <p class="cinzel" style="font-size:14px;color:#C9A020;letter-spacing:4px">LIBAS SYSTEM LOADING...</p>
 </div>
 
-<!-- MAIN ADMIN APP -->
+<div id="orderModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="cinzel" style="color:#E8CC6A;margin:0;font-size:16px">Order Details & Items</h3>
+            <button onclick="closeModal()" style="background:none;border:none;color:#f87171;font-size:28px;cursor:pointer">&times;</button>
+        </div>
+        <div id="modalBody" class="modal-body"></div>
+    </div>
+</div>
+
+<div id="confirmModal" class="modal-overlay">
+    <div class="confirm-box">
+        <div id="confirmIcon" style="font-size:40px;margin-bottom:15px">⚠️</div>
+        <h3 class="cinzel" id="confirmTitle" style="color:#E8CC6A;margin-bottom:10px">Are you sure?</h3>
+        <p id="confirmMsg" style="font-size:13px;opacity:0.7;margin-bottom:25px"></p>
+        <div style="display:flex;gap:12px">
+            <button onclick="closeConfirm()" style="flex:1;padding:12px;background:rgba(255,255,255,0.05);border:none;color:white;border-radius:8px;cursor:pointer">Cancel</button>
+            <button id="confirmOkBtn" style="flex:1;padding:12px;background:rgba(220,38,38,0.2);border:1px solid #f87171;color:#f87171;border-radius:8px;cursor:pointer;font-weight:700">Confirm</button>
+        </div>
+    </div>
+</div>
+
 <div id="adminApp" style="display:none">
-
-  <!-- Sidebar (desktop) -->
   <div class="sidebar">
-    <div style="padding:20px;border-bottom:1px solid rgba(212,175,55,.1);position:fixed;top:0;left:0;width:220px;background:#0f0a1e;z-index:11">
-      <h1 class="cinzel" style="font-size:20px;font-weight:700"><span class="gold-text">Libas</span></h1>
-      <p class="cinzel" style="font-size:7px;letter-spacing:4px;color:#E8CC6A;opacity:.6;margin-top:2px">ADMIN PANEL</p>
+    <div style="padding:0 20px 20px;border-bottom:1px solid rgba(212,175,55,.1);margin-bottom:20px">
+      <h1 class="cinzel" style="font-size:22px;font-weight:700"><span class="gold-text">Libas</span></h1>
+      <p class="cinzel" style="font-size:8px;letter-spacing:3px;opacity:0.5">Admin Management</p>
     </div>
-    <button class="sidebar-btn active" id="navBanners" onclick="showTab('banners')">🖼️ Banner Images</button>
-    <button class="sidebar-btn" id="navPortfolio" onclick="showTab('portfolio')">📁 Portfolio Content</button>
+    <button class="sidebar-btn active" id="navDashboard" onclick="showTab('dashboard')">📊 Dashboard</button>
+    <button class="sidebar-btn" id="navProducts" onclick="showTab('products')">🧵 All Products</button>
+    <button class="sidebar-btn" id="navAdd" onclick="showTab('add')">➕ Add Product</button>
+    <button class="sidebar-btn" id="navBanners" onclick="showTab('banners')">🖼️ Banner Images</button>
+    <button class="sidebar-btn" id="navOrders" onclick="showTab('orders')">📦 Order Details <span id="newOrdersBadge" style="display:none;margin-left:auto;background:#7C3AED;color:white;padding:2px 6px;border-radius:10px;font-size:10px"></span></button>
+    <button class="sidebar-btn" id="navThaanpwd" onclick="showTab('thaanpwd')">🔑 Wholesale Password</button>
+    <button class="sidebar-btn" id="navSetup" onclick="showTab('setup')">⚙️ DB Setup</button>
   </div>
 
-  <!-- Mobile Top Nav (visible only on mobile) -->
-  <div style="display:none;position:sticky;top:0;z-index:200;background:#0f0a1e;border-bottom:1px solid rgba(212,175,55,.2);padding:0" id="mobileAdminNav">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(212,175,55,.15)">
-      <div>
-        <span class="cinzel" style="font-size:18px;font-weight:700"><span class="gold-text">Libas</span></span>
-        <span class="cinzel" style="font-size:7px;letter-spacing:3px;color:#E8CC6A;opacity:.6;margin-left:6px">ADMIN</span>
-      </div>
-    </div>
-    <div style="display:flex;border-bottom:2px solid rgba(212,175,55,.15)">
-      <button id="mnavBanners" onclick="showTab('banners')" style="flex:1;padding:14px 8px;background:rgba(124,58,237,.15);border:none;border-bottom:2px solid #D4AF37;color:#E8CC6A;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px">🖼️ Banners</button>
-      <button id="mnavPortfolio" onclick="showTab('portfolio')" style="flex:1;padding:14px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.5);font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px">📁 Portfolio Content</button>
-    </div>
-  </div>
-
-  <!-- Main content -->
-  <div class="main-content" style="margin-left:220px;padding:30px;min-height:100vh">
+  <div class="main-content">
     <div id="tabContent"></div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ── SUPABASE CONFIG ──
-const SUPABASE_URL  = 'https://hkdenuzxxrcvcgtbqgxq.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhrZGVudXp4eHJjdmNndGJxZ3hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NTM5MjIsImV4cCI6MjA4NzMyOTkyMn0.2GgEChu1H-1vyKorxjDm_p4VHP7YOuSpFMo_wF8f6vY';
+// --- SUPABASE CONFIG ---
+const SUPABASE_URL  = 'https://pkxdhwvfnnzmjxjtostm.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBreGRod3Zmbm56bWp4anRvc3RtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwOTA5MTcsImV4cCI6MjA4NzY2NjkxN30.nKk0BVTHCVPhVGpBdL5RPCHl67DyQiBRZVclnjtGtvo';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
+// --- GLOBAL STATE ---
+const CATEGORIES = ['Shirting', 'Suiting', 'Thaan'];
+const SUBCATS = { Shirting: ['Linen','Cotton','Cotton Linen','Khadi','Polister'], Suiting: ['Linen','Cotton','Raymond','Mafatlal','Donear'], Thaan: ['Linen','Cotton','Suiting Thaan','Shirting Thaan'] };
+const ALL_SIZES = ['1.20m','1.30m','1.60m','1.80m','2.00m','2.15m','2.25m','2.30m'];
 const STORAGE_BUCKET = 'product_images';
-const PORTFOLIO_CATEGORIES = [
-  { key: 'about',        label: 'About Us',         color: '#7C3AED' },
-  { key: 'specialities', label: 'Our Specialities',  color: '#C9A020' },
-  { key: 'achievements', label: 'Our Achievements',  color: '#16A34A' },
-  { key: 'goals',        label: 'Our Future Goals',  color: '#2563EB' },
-];
 
-// ── STATE ──
-let banners = [];
-let portfolioItems = [];
-let pendingBannerUrls = [];
-let pendingPortfolioUrls = [];
-const pitemSlideIdx = {};
-let bannerTableOk = true;
-let portfolioTableOk = true;
+let products = [], banners = [], orders = [];
+let editingId = null;
+let selectedSizes = [];
+let _ordersFilter = '', _ordersPayFilter = '';
+let _prodImgUrls = [];
 
-// ── INIT ──
+// --- INITIALIZE ---
 async function init() {
+  await Promise.all([loadProducts(), loadBanners(), loadOrders()]);
   document.getElementById('loadingScreen').style.display = 'none';
   document.getElementById('adminApp').style.display = 'block';
-  await Promise.all([loadBanners(), loadPortfolioItems()]);
-  showTab('banners');
+  showTab('dashboard');
 }
 
-// ── DATA LOADERS ──
+async function loadProducts() {
+  const { data } = await sb.from('products').select('*').order('created_at', { ascending: false });
+  products = data || [];
+}
 async function loadBanners() {
-  try {
-    const { data, error } = await sb.from('banner_images').select('*').order('sort_order', { ascending: true });
-    if (error) { bannerTableOk = false; banners = []; return; }
-    bannerTableOk = true;
-    banners = data || [];
-  } catch(e) { bannerTableOk = false; banners = []; }
+  const { data } = await sb.from('banner_images').select('*').order('sort_order', { ascending: true });
+  banners = data || [];
+}
+async function loadOrders() {
+  const { data } = await sb.from('orders').select('*').order('created_at', { ascending: false });
+  orders = data || [];
+  const badge = document.getElementById('newOrdersBadge');
+  const count = orders.filter(o => o.order_status === 'New').length;
+  if(badge) { badge.textContent = count; badge.style.display = count > 0 ? 'inline' : 'none'; }
 }
 
-async function loadPortfolioItems() {
-  try {
-    const { data, error } = await sb.from('portfolio_items').select('*').order('created_at', { ascending: false });
-    if (error) { portfolioTableOk = false; portfolioItems = []; return; }
-    portfolioTableOk = true;
-    portfolioItems = data || [];
-  } catch(e) { portfolioTableOk = false; portfolioItems = []; }
-}
-
-// ── TABS ──
+// --- TABS ---
 function showTab(tab) {
-  // Desktop sidebar
-  document.getElementById('navBanners').classList.toggle('active', tab === 'banners');
-  document.getElementById('navPortfolio').classList.toggle('active', tab === 'portfolio');
-
-  // Mobile top nav
-  const mb = document.getElementById('mnavBanners');
-  const mp = document.getElementById('mnavPortfolio');
-  if (mb && mp) {
-    const activeStyle = 'flex:1;padding:14px 8px;background:rgba(124,58,237,.15);border:none;border-bottom:2px solid #D4AF37;color:#E8CC6A;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px';
-    const idleStyle   = 'flex:1;padding:14px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.5);font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-bottom:-2px';
-    mb.style.cssText = tab === 'banners'   ? activeStyle : idleStyle;
-    mp.style.cssText = tab === 'portfolio' ? activeStyle : idleStyle;
-  }
-
-  if (tab === 'banners') renderBannersTab();
-  else if (tab === 'portfolio') renderPortfolioTab();
-}
-
-// ════════════════════════════════════════
-// ── BANNER IMAGES TAB ──
-// ════════════════════════════════════════
-function renderBannersTab() {
-  const dbAlert = !bannerTableOk ? `
-  <div style="background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:10px;padding:16px 20px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start">
-    <span style="font-size:20px;flex-shrink:0">⚠️</span>
-    <div>
-      <p class="cinzel" style="font-size:12px;color:#f87171;letter-spacing:1px;margin-bottom:6px">BANNER TABLE ERROR — RUN THIS SQL IN SUPABASE</p>
-      <div style="background:rgba(0,0,0,.4);border-radius:6px;padding:10px 14px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:1.8;position:relative;margin-bottom:8px">
-        <button onclick="navigator.clipboard.writeText(document.getElementById('sqlBannerFix').textContent).then(()=>notify('Copied!','success'))" style="position:absolute;top:6px;right:8px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-        <pre id="sqlBannerFix" style="white-space:pre-wrap;margin:0">ALTER TABLE banner_images DISABLE ROW LEVEL SECURITY;
-
--- If table doesn't exist yet:
-CREATE TABLE IF NOT EXISTS banner_images (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  image_url text NOT NULL,
-  title text,
-  subtitle text,
-  sort_order integer DEFAULT 0,
-  is_active boolean DEFAULT true,
-  created_at timestamptz DEFAULT now()
-);
-ALTER TABLE banner_images DISABLE ROW LEVEL SECURITY;</pre>
-      </div>
-      <button onclick="loadBanners().then(renderBannersTab)" class="btn-outline" style="padding:7px 16px;border-radius:6px;font-size:11px">↺ Retry</button>
-    </div>
-  </div>` : '';
-  document.getElementById('tabContent').innerHTML = `
-  ${dbAlert}
-  <div style="margin-bottom:28px">
-    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Banner Images</span></h2>
-    <p style="color:rgba(255,255,255,.4);font-size:13px">Upload and manage the homepage banner slider images</p>
-  </div>
-
-  <!-- Upload Form -->
-  <div class="card" style="margin-bottom:24px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">ADD NEW BANNERS</h3>
-    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-      <div>
-        <label class="label">Title (optional)</label>
-        <input class="input-field" id="bTitle" type="text" placeholder="e.g. Premium Collection 2025"/>
-      </div>
-      <div>
-        <label class="label">Subtitle (optional)</label>
-        <input class="input-field" id="bSubtitle" type="text" placeholder="e.g. Premium fabrics at best prices"/>
-      </div>
-    </div>
-    <div style="margin-bottom:16px">
-      <label class="label">Sort Order <span style="color:rgba(255,255,255,.3);font-size:9px">(lower = shown first)</span></label>
-      <input class="input-field" id="bOrder" type="number" min="0" value="${banners.length}" style="max-width:120px"/>
-    </div>
-
-    <label class="label">Banner Image(s) * <span style="color:rgba(255,255,255,.3);font-size:9px">(select multiple — each becomes a separate banner slide)</span></label>
-    <div class="upload-zone" id="bannerUploadZone" onclick="document.getElementById('bannerImgFile').click()"
-         ondragover="event.preventDefault();this.classList.add('dragover')"
-         ondragleave="this.classList.remove('dragover')"
-         ondrop="handleBannerDrop(event)">
-      <div id="bannerPreviewWrap">
-        <div style="font-size:48px;margin-bottom:10px">🖼️</div>
-        <p class="cinzel" style="font-size:12px;color:#C9A020;letter-spacing:1px;margin-bottom:4px">CLICK OR DRAG TO UPLOAD BANNER IMAGES</p>
-        <p style="font-size:12px;color:rgba(255,255,255,.3)">Select multiple photos · Recommended: 1200×420px · JPG, PNG, WEBP · Max 10MB each</p>
-      </div>
-      <div id="bannerUploadProgress" style="display:none;margin-top:12px">
-        <div class="progress-bar"><div class="progress-fill" id="bannerProgressFill" style="width:0%"></div></div>
-        <p style="font-size:11px;color:#C9A020;margin-top:6px" id="bannerUploadStatus">Uploading...</p>
-      </div>
-    </div>
-    <input type="file" id="bannerImgFile" accept="image/*" multiple style="display:none" onchange="handleBannerFileSelect(this)"/>
-
-    <button class="btn-gold" id="addBannerBtn" onclick="addBanners()" style="padding:12px 32px;border-radius:8px;font-size:12px;margin-top:16px">✅ Save Banners</button>
-  </div>
-
-  <!-- Current Banners -->
-  <div class="card">
-    <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">CURRENT BANNERS (${banners.length})</h3>
-    <div id="bannerList" class="banner-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">
-      ${banners.length === 0
-        ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet. Upload your first one above.</p>'
-        : banners.map(b => bannerCardHTML(b)).join('')}
-    </div>
-  </div>`;
-}
-
-function bannerCardHTML(b) {
-  const isActive = b.is_active;
-  return '<div class="banner-card" id="bcard-' + b.id + '">'
-    + '<div style="width:100%;height:180px;background:rgba(59,7,100,.5);position:relative;overflow:hidden">'
-    + (b.image_url
-        ? '<img src="' + b.image_url + '" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background=\'rgba(59,7,100,.8)\'">'
-        : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px"><span style="font-size:40px">🖼️</span></div>')
-    + '<span style="position:absolute;top:10px;left:10px;font-size:9px;padding:4px 10px;border-radius:20px;background:' + (isActive ? 'rgba(22,163,74,.9)' : 'rgba(107,114,128,.7)') + ';color:#fff;font-family:Cinzel,serif;letter-spacing:1.5px;font-weight:700">' + (isActive ? '● LIVE' : '● HIDDEN') + '</span>'
-    + '<span style="position:absolute;top:10px;right:10px;font-size:9px;padding:4px 10px;border-radius:20px;background:rgba(0,0,0,.5);color:rgba(212,175,55,.8);font-family:Cinzel,serif">Order: ' + (b.sort_order || 0) + '</span>'
-    + '</div>'
-    + '<div style="padding:12px 14px">'
-    + '<p style="font-weight:600;font-size:13px;color:#fff;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (b.title || '<span style="color:rgba(255,255,255,.3)">No title set</span>') + '</p>'
-    + (b.subtitle ? '<p style="font-size:11px;color:rgba(212,175,55,.6);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + b.subtitle + '</p>' : '<div style="margin-bottom:10px"></div>')
-    + '<div style="display:flex;gap:8px">'
-    + '<button onclick="toggleBannerActive(\'' + b.id + '\',' + isActive + ')" style="flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-family:Cinzel,serif;cursor:pointer;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.1);color:#E8CC6A;letter-spacing:.5px">' + (isActive ? '👁 Hide' : '✅ Show') + '</button>'
-    + '<button onclick="delBanner(\'' + b.id + '\')" style="flex:1;padding:7px 10px;border-radius:6px;font-size:11px;font-family:Cinzel,serif;cursor:pointer;border:1px solid rgba(220,38,38,.5);background:rgba(127,29,29,.4);color:#fca5a5;letter-spacing:.5px">🗑 Delete</button>'
-    + '</div></div></div>';
-}
-
-async function handleBannerFileSelect(input) {
-  const files = Array.from(input.files);
-  if (!files.length) return;
-  await uploadBannerFiles(files);
-}
-function handleBannerDrop(e) {
-  e.preventDefault();
-  document.getElementById('bannerUploadZone').classList.remove('dragover');
-  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
-  if (!files.length) { notify('Please drop image files.', 'error'); return; }
-  uploadBannerFiles(files);
-}
-async function uploadBannerFiles(files) {
-  const prog = document.getElementById('bannerUploadProgress');
-  const fill = document.getElementById('bannerProgressFill');
-  const status = document.getElementById('bannerUploadStatus');
-  const prevWrap = document.getElementById('bannerPreviewWrap');
-  prog.style.display = 'block'; prevWrap.style.opacity = '0.4';
-  pendingBannerUrls = [];
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    if (file.size > 10 * 1024 * 1024) { notify(`${file.name} too large (max 10MB), skipped.`, 'error'); continue; }
-    fill.style.width = Math.round(((i + 0.5) / files.length) * 100) + '%';
-    status.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}`;
-    const ext = file.name.split('.').pop().toLowerCase();
-    const fileName = `banners/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { data, error } = await sb.storage.from(STORAGE_BUCKET).upload(fileName, file, { cacheControl: '3600', upsert: true });
-    if (error) { notify(`Failed: ${file.name} — ${error.message}`, 'error'); continue; }
-    const { data: urlData } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(fileName);
-    pendingBannerUrls.push(urlData.publicUrl);
-  }
-  fill.style.width = '100%';
-  status.textContent = `✅ ${pendingBannerUrls.length} of ${files.length} uploaded!`;
-  prevWrap.style.opacity = '1';
-  if (pendingBannerUrls.length > 0) {
-    prevWrap.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px">
-      ${pendingBannerUrls.map(url => `<img src="${url}" style="height:80px;width:140px;object-fit:cover;border-radius:6px;border:1px solid rgba(212,175,55,.4)"/>`).join('')}
-    </div><p style="color:#4ade80;font-size:12px">${pendingBannerUrls.length} image(s) ready — click Save Banners below</p>`;
-    notify(`✅ ${pendingBannerUrls.length} banner image(s) uploaded!`, 'success');
-  }
-  setTimeout(() => { prog.style.display = 'none'; fill.style.width = '0%'; }, 2000);
-}
-async function addBanners() {
-  if (!pendingBannerUrls.length) { notify('Please upload at least one image first.', 'error'); return; }
-  const btn = document.getElementById('addBannerBtn');
-  btn.disabled = true; btn.innerHTML = '<span class="spinner-sm"></span> Saving...';
-  const title    = (document.getElementById('bTitle').value || '').trim() || null;
-  const subtitle = (document.getElementById('bSubtitle').value || '').trim() || null;
-  const baseOrder = parseInt(document.getElementById('bOrder').value || '0') || 0;
-  const rows = pendingBannerUrls.map((url, idx) => ({ image_url: url, title, subtitle, sort_order: baseOrder + idx, is_active: true }));
-  const { error } = await sb.from('banner_images').insert(rows);
-  if (error) { notify('Error saving banners: ' + error.message, 'error'); btn.disabled = false; btn.textContent = '✅ Save Banners'; return; }
-  notify(`✅ ${rows.length} banner(s) added!`, 'success');
-  pendingBannerUrls = [];
-  await loadBanners();
-  renderBannersTab();
-}
-async function toggleBannerActive(id, current) {
-  const { error } = await sb.from('banner_images').update({ is_active: !current }).eq('id', id);
-  if (error) { notify('Error: ' + error.message, 'error'); return; }
-  await loadBanners();
-  const list = document.getElementById('bannerList');
-  if (list) list.innerHTML = banners.length === 0 ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet.</p>' : banners.map(b => bannerCardHTML(b)).join('');
-  notify(`Banner ${!current ? 'shown' : 'hidden'} on website.`, 'success');
-}
-async function delBanner(id) {
-  if (!confirm('Delete this banner? This cannot be undone.')) return;
-  const { error } = await sb.from('banner_images').delete().eq('id', id);
-  if (error) { notify('Error: ' + error.message, 'error'); return; }
-  notify('🗑 Banner deleted.', 'info');
-  await loadBanners();
-  const list = document.getElementById('bannerList');
-  if (list) list.innerHTML = banners.length === 0 ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:40px;grid-column:1/-1">No banners yet.</p>' : banners.map(b => bannerCardHTML(b)).join('');
-}
-
-// ════════════════════════════════════════
-// ── PORTFOLIO CONTENT TAB ──
-// ════════════════════════════════════════
-function renderPortfolioTab() {
-  const catOptions = PORTFOLIO_CATEGORIES.map(c => `<option value="${c.key}">${c.label}</option>`).join('');
-  const totalItems = portfolioItems.length;
-
-  // Show prominent alert if portfolio table is missing
-  const dbAlert = !portfolioTableOk ? `
-  <div style="background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:10px;padding:16px 20px;margin-bottom:24px">
-    <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
-      <span style="font-size:20px;flex-shrink:0">⚠️</span>
-      <div>
-        <p class="cinzel" style="font-size:12px;color:#f87171;letter-spacing:1px;margin-bottom:4px">PORTFOLIO TABLE NOT FOUND</p>
-        <p style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6">Run this SQL once in <b style="color:#C9A020">Supabase → SQL Editor</b>, then click Retry:</p>
-      </div>
-    </div>
-    <div style="background:rgba(0,0,0,.4);border-radius:6px;padding:12px 14px;font-family:monospace;font-size:12px;color:#a5f3fc;line-height:1.8;position:relative;margin-bottom:12px">
-      <button onclick="navigator.clipboard.writeText(document.getElementById('sqlPortfolioFix').textContent).then(()=>notify('SQL copied!','success'))" style="position:absolute;top:6px;right:8px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#E8CC6A;padding:3px 8px;border-radius:4px;cursor:pointer;font-size:10px;font-family:'Cinzel',serif">COPY</button>
-      <pre id="sqlPortfolioFix" style="white-space:pre-wrap;margin:0">CREATE TABLE IF NOT EXISTS portfolio_items (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  image_urls jsonb DEFAULT '[]',
-  category text NOT NULL,
-  title text,
-  description text,
-  sort_order integer DEFAULT 0,
-  created_at timestamptz DEFAULT now()
-);
-ALTER TABLE portfolio_items DISABLE ROW LEVEL SECURITY;
--- If table already exists, add the title column:
-ALTER TABLE portfolio_items ADD COLUMN IF NOT EXISTS title text;</pre>
-    </div>
-    <button onclick="loadPortfolioItems().then(renderPortfolioTab)" class="btn-gold" style="padding:9px 20px;border-radius:6px;font-size:11px">↺ Retry After Running SQL</button>
-  </div>` : '';
-
-  document.getElementById('tabContent').innerHTML = `
-  <div style="margin-bottom:28px">
-    <h2 class="cinzel" style="font-size:24px;font-weight:700;margin-bottom:4px"><span class="gold-text">Portfolio Content</span></h2>
-    <p style="color:rgba(255,255,255,.4);font-size:13px">Manage content for About Us, Specialities, Achievements &amp; Future Goals sections</p>
-  </div>
-
-  ${dbAlert}
-
-  <!-- Upload Form -->
-  <div class="card" style="margin-bottom:24px">
-    <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:20px;letter-spacing:1px">ADD NEW PORTFOLIO ITEM</h3>
-
-    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-
-      <!-- Image Upload -->
-      <div style="grid-column:1/-1">
-        <label class="label">Upload Image(s) * <span style="color:rgba(255,255,255,.3);font-size:9px">(select multiple — all become one card with a slider)</span></label>
-        <div class="upload-zone" id="portfolioUploadZone" onclick="document.getElementById('portfolioImgFile').click()"
-             ondragover="event.preventDefault();this.classList.add('dragover')"
-             ondragleave="this.classList.remove('dragover')"
-             ondrop="handlePortfolioDrop(event)">
-          <div id="portfolioPreviewWrap">
-            <div style="font-size:40px;margin-bottom:10px">📷</div>
-            <p class="cinzel" style="font-size:11px;color:#C9A020;letter-spacing:1px;margin-bottom:4px">CLICK OR DRAG TO UPLOAD IMAGES</p>
-            <p style="font-size:12px;color:rgba(255,255,255,.3)">Select one or multiple images · JPG, PNG, WEBP · Max 10MB each</p>
-          </div>
-          <div id="portfolioUploadProgress" style="display:none;margin-top:12px">
-            <div class="progress-bar"><div class="progress-fill" id="portfolioProgressFill" style="width:0%"></div></div>
-            <p style="font-size:11px;color:#C9A020;margin-top:6px" id="portfolioUploadStatus">Uploading...</p>
-          </div>
-        </div>
-        <input type="file" id="portfolioImgFile" accept="image/*" multiple style="display:none" onchange="handlePortfolioFileSelect(this)"/>
-      </div>
-
-      <!-- Category Select -->
-      <div>
-        <label class="label">Section / Category *</label>
-        <select class="select-field" id="pCategory">
-          <option value="" disabled selected>Select a section…</option>
-          ${catOptions}
-        </select>
-      </div>
-
-      <!-- Title -->
-      <div>
-        <label class="label">Title *</label>
-        <input class="input-field" id="pTitle" type="text" placeholder="e.g. Premium Quality Fabrics"/>
-      </div>
-
-      <!-- Description -->
-      <div>
-        <label class="label">Description</label>
-        <textarea class="input-field" id="pDescription" rows="3" placeholder="Describe this item in detail…"></textarea>
-      </div>
-
-    </div>
-
-    <button class="btn-gold" id="savePortfolioBtn" onclick="savePortfolioItem()" style="padding:13px 36px;border-radius:8px;font-size:12px">✅ Save Portfolio Item</button>
-  </div>
-
-  <!-- Existing Items grouped by section -->
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-      <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;letter-spacing:1px">CURRENT PORTFOLIO ITEMS (${totalItems})</h3>
-      <div style="display:flex;gap:8px;flex-wrap:wrap" id="catFilterBtns">
-        <button onclick="filterPortfolio('all')" class="cat-filter-btn active" data-cat="all" style="padding:5px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.15);color:#E8CC6A;font-family:'Cinzel',serif;font-size:10px;cursor:pointer;letter-spacing:.5px">All</button>
-        ${PORTFOLIO_CATEGORIES.map(c => `<button onclick="filterPortfolio('${c.key}')" class="cat-filter-btn" data-cat="${c.key}" style="padding:5px 14px;border-radius:20px;border:1px solid rgba(212,175,55,.2);background:transparent;color:rgba(255,255,255,.5);font-family:'Cinzel',serif;font-size:10px;cursor:pointer;letter-spacing:.5px">${c.label}</button>`).join('')}
-      </div>
-    </div>
-    <div id="portfolioItemsList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px" class="pitem-grid">
-      ${portfolioItems.length === 0
-        ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No portfolio items yet. Add your first item above.</p>'
-        : portfolioItems.map(p => portfolioItemCardHTML(p)).join('')}
-    </div>
-  </div>`;
-}
-
-function toggleDbSetup() {
-  const el = document.getElementById('dbSetupContent');
-  el.style.display = el.style.display === 'none' ? 'block' : 'none';
-}
-function copySql() {
-  const text = document.getElementById('setupSql').textContent;
-  navigator.clipboard.writeText(text).then(() => notify('SQL copied to clipboard!', 'success'));
-}
-
-function getCatInfo(key) {
-  return PORTFOLIO_CATEGORIES.find(c => c.key === key) || { label: key, color: '#9CA3AF' };
-}
-
-function parseUrls(item) {
-  if (item.image_urls) {
-    try {
-      const arr = Array.isArray(item.image_urls) ? item.image_urls : JSON.parse(item.image_urls);
-      if (arr && arr.length > 0) return arr;
-    } catch(e) {}
-  }
-  if (item.image_url) return [item.image_url];
-  return [];
-}
-
-function portfolioItemCardHTML(item) {
-  const images = parseUrls(item);
-  const hasMultiple = images.length > 1;
-  const catInfo = getCatInfo(item.category);
-  const cardId = 'pitem-' + item.id;
-
-  // ── IMAGE SECTION ──
-  let imgSection = '';
-  if (images.length === 0) {
-    imgSection = `<div style="height:200px;background:linear-gradient(135deg,#1a0535,#3B0764);display:flex;align-items:center;justify-content:center"><span style="font-size:44px;opacity:.35">🖼️</span></div>`;
-  } else if (hasMultiple) {
-    const slidesHTML = images.map(url =>
-      `<div class="pitem-slide"><img src="${url}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity='.2'"/></div>`
-    ).join('');
-    const dotsHTML = images.map((_, i) =>
-      `<button class="pitem-dot${i === 0 ? ' active' : ''}" onclick="movePitemSlide('${cardId}',${i},true)"></button>`
-    ).join('');
-    imgSection = `<div class="pitem-slider" id="${cardId}" style="height:200px">
-      <div class="pitem-track" style="display:flex;height:100%">${slidesHTML}</div>
-      <button class="pitem-arrow" onclick="movePitemSlide('${cardId}',-1,false)" style="left:6px">‹</button>
-      <button class="pitem-arrow" onclick="movePitemSlide('${cardId}',1,false)" style="right:6px">›</button>
-      <div class="pitem-dots">${dotsHTML}</div>
-    </div>`;
-  } else {
-    imgSection = `<div style="height:200px;overflow:hidden"><img src="${images[0]}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.opacity='.2'"/></div>`;
-  }
-
-  const countBadge = hasMultiple ? `<span style="background:rgba(0,0,0,.55);color:#E8CC6A;font-size:9px;padding:3px 8px;border-radius:10px;font-family:'Cinzel',serif;letter-spacing:.5px">${images.length} photos</span>` : '';
-
-  // ── CARD LAYOUT: Image → Category badge → Title → Description ──
-  return `<div class="pitem-card" id="picard-${item.id}" style="display:flex;flex-direction:column">
-
-    <!-- Image with overlaid category badge -->
-    <div style="position:relative;flex-shrink:0">
-      ${imgSection}
-      <div style="position:absolute;top:10px;left:10px;display:flex;gap:6px;align-items:center;z-index:5">
-        <span class="category-badge" style="background:${catInfo.color}33;color:${catInfo.color};border:1px solid ${catInfo.color}55;backdrop-filter:blur(4px)">${catInfo.label}</span>
-        ${countBadge}
-      </div>
-    </div>
-
-    <!-- Title + Description body -->
-    <div style="padding:16px 16px 14px;flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(212,175,55,.12)">
-
-      <!-- Title -->
-      <h3 style="font-family:'Cinzel',serif;font-size:13px;font-weight:700;color:#E8CC6A;letter-spacing:.8px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-        ${item.title || '<span style="color:rgba(212,175,55,.3);font-weight:400;font-style:italic">No title</span>'}
-      </h3>
-
-      <!-- Thin gold divider -->
-      <div style="height:1px;background:linear-gradient(90deg,rgba(212,175,55,.4),transparent)"></div>
-
-      <!-- Description -->
-      <p style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.65;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical">
-        ${item.description || '<span style="color:rgba(255,255,255,.2);font-style:italic">No description added</span>'}
-      </p>
-
-      <!-- Footer row -->
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
-        <span style="font-size:9px;color:rgba(255,255,255,.2);font-family:'Cinzel',serif;letter-spacing:.5px">
-          ${item.created_at ? new Date(item.created_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : ''}
-        </span>
-        <button onclick="delPortfolioItem('${item.id}')" class="btn-danger" style="padding:5px 12px;font-size:10px;border-radius:6px">🗑 Delete</button>
-      </div>
-    </div>
-
-  </div>`;
-}
-
-// ── FILTER ──
-function filterPortfolio(cat) {
-  // Update button styles
-  document.querySelectorAll('.cat-filter-btn').forEach(btn => {
-    const isActive = btn.dataset.cat === cat;
-    btn.style.background = isActive ? 'rgba(212,175,55,.15)' : 'transparent';
-    btn.style.color = isActive ? '#E8CC6A' : 'rgba(255,255,255,.5)';
-    btn.style.borderColor = isActive ? 'rgba(212,175,55,.4)' : 'rgba(212,175,55,.2)';
+  const allTabs = ['dashboard','products','add','banners','setup','orders','thaanpwd'];
+  allTabs.forEach(t => {
+    const el = document.getElementById('nav' + t.charAt(0).toUpperCase() + t.slice(1));
+    if(el) el.classList.toggle('active', t === tab);
   });
-
-  const list = document.getElementById('portfolioItemsList');
-  if (!list) return;
-  const items = cat === 'all' ? portfolioItems : portfolioItems.filter(p => p.category === cat);
-  list.innerHTML = items.length === 0
-    ? `<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No items in this section yet.</p>`
-    : items.map(p => portfolioItemCardHTML(p)).join('');
+  
+  if(tab === 'dashboard') renderDashboard();
+  else if(tab === 'products') renderProducts();
+  else if(tab === 'add') { editingId = null; selectedSizes = []; _prodImgUrls = []; renderForm(); }
+  else if(tab === 'banners') renderBanners();
+  else if(tab === 'orders') renderOrders();
+  else if(tab === 'thaanpwd') renderThaanPwd();
+  else if(tab === 'setup') renderSetup();
 }
 
-// ── PORTFOLIO UPLOAD ──
-async function handlePortfolioFileSelect(input) {
-  const files = Array.from(input.files);
-  if (!files.length) return;
-  await uploadPortfolioFiles(files);
-}
-function handlePortfolioDrop(e) {
-  e.preventDefault();
-  document.getElementById('portfolioUploadZone').classList.remove('dragover');
-  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
-  if (!files.length) { notify('Please drop image files.', 'error'); return; }
-  uploadPortfolioFiles(files);
-}
-async function uploadPortfolioFiles(files) {
-  const prog = document.getElementById('portfolioUploadProgress');
-  const fill = document.getElementById('portfolioProgressFill');
-  const status = document.getElementById('portfolioUploadStatus');
-  const prevWrap = document.getElementById('portfolioPreviewWrap');
-  prog.style.display = 'block'; prevWrap.style.opacity = '0.4';
-  pendingPortfolioUrls = [];
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    if (file.size > 10 * 1024 * 1024) { notify(`${file.name} too large (max 10MB), skipped.`, 'error'); continue; }
-    fill.style.width = Math.round(((i + 0.5) / files.length) * 100) + '%';
-    status.textContent = `Uploading ${i + 1} of ${files.length}: ${file.name}`;
-    const ext = file.name.split('.').pop().toLowerCase();
-    const fileName = `portfolio/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { data, error } = await sb.storage.from(STORAGE_BUCKET).upload(fileName, file, { cacheControl: '3600', upsert: true });
-    if (error) { notify(`Failed: ${file.name} — ${error.message}`, 'error'); continue; }
-    const { data: urlData } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(fileName);
-    pendingPortfolioUrls.push(urlData.publicUrl);
-  }
-  fill.style.width = '100%';
-  status.textContent = `✅ ${pendingPortfolioUrls.length} of ${files.length} uploaded!`;
-  prevWrap.style.opacity = '1';
-  if (pendingPortfolioUrls.length > 0) {
-    prevWrap.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px">
-      ${pendingPortfolioUrls.map(url => `<img src="${url}" style="height:70px;width:120px;object-fit:cover;border-radius:6px;border:1px solid rgba(212,175,55,.4)"/>`).join('')}
-    </div><p style="color:#4ade80;font-size:12px">${pendingPortfolioUrls.length} image(s) ready — choose category and save below</p>`;
-    notify(`✅ ${pendingPortfolioUrls.length} image(s) ready!`, 'success');
-  }
-  setTimeout(() => { prog.style.display = 'none'; fill.style.width = '0%'; }, 2000);
-}
+// --- DASHBOARD ---
+function renderDashboard() {
+  const shirtingCount = products.filter(p => p.category === 'Shirting').length;
+  const suitingCount = products.filter(p => p.category === 'Suiting').length;
+  const newArrivals = products.filter(p => p.is_new).length;
+  const revenue = orders.filter(o => o.payment_status === 'Paid').reduce((s,o) => s + Number(o.total_amount||0), 0);
+  const split = products.length ? Math.round((shirtingCount/products.length)*100) : 0;
 
-async function savePortfolioItem() {
-  if (!pendingPortfolioUrls.length) { notify('Please upload at least one image first.', 'error'); return; }
-  const category = document.getElementById('pCategory').value;
-  if (!category) { notify('Please select a section/category.', 'error'); return; }
-  const title = (document.getElementById('pTitle').value || '').trim() || null;
-  if (!title) { notify('Please enter a title for this item.', 'error'); return; }
-  const description = (document.getElementById('pDescription').value || '').trim() || null;
+  document.getElementById('tabContent').innerHTML = `
+    <h2 class="cinzel" style="margin-bottom:25px"><span class="gold-text">📊 Dashboard</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:25px">
+        <div class="stat-card"><div class="stat-icon" style="background:#7c3aed22">🧵</div><div><div class="cinzel" style="font-size:22px">${products.length}</div><div style="font-size:11px;opacity:0.5">Total Products</div></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#2563eb22">👔</div><div><div class="cinzel" style="font-size:22px">${shirtingCount}</div><div style="font-size:11px;opacity:0.5">Shirting</div></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#05966922">🎩</div><div><div class="cinzel" style="font-size:22px">${suitingCount}</div><div style="font-size:11px;opacity:0.5">Suiting</div></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#d9770622">⭐</div><div><div class="cinzel" style="font-size:22px">${newArrivals}</div><div style="font-size:11px;opacity:0.5">New Arrivals</div></div></div>
+    </div>
 
-  const btn = document.getElementById('savePortfolioBtn');
-  btn.disabled = true; btn.innerHTML = '<span class="spinner-sm"></span> Saving...';
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:25px">
+        <div class="stat-card" style="cursor:pointer" onclick="showTab('orders')"><div class="stat-icon">📦</div><div><div class="cinzel" style="font-size:22px">${orders.length}</div><div style="font-size:11px;opacity:0.5">Total Orders</div></div></div>
+        <div class="stat-card" style="cursor:pointer; ${orders.filter(o=>o.order_status==='New').length > 0 ? 'border-color:#7C3AED' : ''}" onclick="showTab('orders')"><div class="stat-icon" style="background:#7c3aed22">🆕</div><div><div class="cinzel" style="font-size:22px; ${orders.filter(o=>o.order_status==='New').length > 0 ? 'color:#a78bfa' : ''}">${orders.filter(o=>o.order_status==='New').length}</div><div style="font-size:11px;opacity:0.5">New Orders</div></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#C9A02022">₹</div><div><div class="cinzel" style="font-size:20px;color:#C9A020">₹${revenue.toFixed(0)}</div><div style="font-size:11px;opacity:0.5">Paid Revenue</div></div></div>
+    </div>
 
-  const row = {
-    image_urls: JSON.stringify(pendingPortfolioUrls),
-    category,
-    title,
-    description,
-    sort_order: portfolioItems.filter(p => p.category === category).length,
-  };
-
-  const { error } = await sb.from('portfolio_items').insert([row]);
-  if (error) {
-    notify('Error saving item: ' + error.message, 'error');
-    btn.disabled = false; btn.textContent = '✅ Save Portfolio Item';
-    return;
-  }
-
-  notify('✅ Portfolio item saved!', 'success');
-  pendingPortfolioUrls = [];
-
-  // Reset form
-  document.getElementById('pCategory').value = '';
-  document.getElementById('pTitle').value = '';
-  document.getElementById('pDescription').value = '';
-  document.getElementById('portfolioPreviewWrap').innerHTML = `<div style="font-size:40px;margin-bottom:10px">📷</div>
-    <p class="cinzel" style="font-size:11px;color:#C9A020;letter-spacing:1px;margin-bottom:4px">CLICK OR DRAG TO UPLOAD IMAGES</p>
-    <p style="font-size:12px;color:rgba(255,255,255,.3)">Select one or multiple images · JPG, PNG, WEBP · Max 10MB each</p>`;
-  document.getElementById('portfolioImgFile').value = '';
-  btn.disabled = false; btn.textContent = '✅ Save Portfolio Item';
-
-  await loadPortfolioItems();
-  const list = document.getElementById('portfolioItemsList');
-  if (list) list.innerHTML = portfolioItems.length === 0
-    ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No items yet.</p>'
-    : portfolioItems.map(p => portfolioItemCardHTML(p)).join('');
-
-  // Update count header
-  const countEl = document.querySelector('#tabContent .cinzel');
-  if (countEl && countEl.textContent.includes('CURRENT')) countEl.textContent = `CURRENT PORTFOLIO ITEMS (${portfolioItems.length})`;
+    <div style="display:grid;grid-template-columns: 2fr 1fr; gap:20px">
+        <div class="card">
+            <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px">RECENT PRODUCTS</h3>
+            ${products.slice(0,5).map(p => `
+                <div style="display:flex;align-items:center;gap:12px;padding:10px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:8px">
+                    <img src="${p.image_url}" style="width:40px;height:40px;object-fit:cover;border-radius:6px">
+                    <div style="flex:1"><p style="font-size:13px;font-weight:600">${p.name}</p><small style="opacity:0.5">${p.category} · ${p.brand}</small></div>
+                    <span class="cinzel" style="color:#C9A020;font-weight:700">₹${p.price}</span>
+                    ${p.is_new ? '<span style="background:#D4AF37;color:black;font-size:8px;padding:2px 5px;border-radius:2px;font-weight:700">NEW</span>' : ''}
+                </div>
+            `).join('')}
+            ${products.length > 5 ? `<button class="btn-outline" style="width:100%;margin-top:10px" onclick="showTab('products')">View All Products →</button>` : ''}
+        </div>
+        <div class="card">
+            <h3 class="cinzel" style="font-size:14px;color:#E8CC6A;margin-bottom:20px">QUICK ACTIONS</h3>
+            <div style="display:flex;flex-direction:column;gap:10px">
+                <button class="btn-gold" onclick="showTab('add')">+ Add Product</button>
+                <button class="btn-outline" onclick="showTab('orders')">📦 View Orders</button>
+                <button class="btn-outline" onclick="showTab('products')">📋 All Products</button>
+                <button class="btn-outline" onclick="showTab('banners')">🖼️ Manage Banners</button>
+            </div>
+            <div style="margin-top:25px">
+                <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px"><span style="color:#2563eb">Shirting</span><span style="color:#059669">Suiting</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:${split}%"></div></div>
+                <p style="text-align:center;font-size:10px;opacity:0.4;margin-top:5px">${split}% Shirting / ${100-split}% Suiting</p>
+            </div>
+        </div>
+    </div>`;
 }
 
-async function delPortfolioItem(id) {
-  if (!confirm('Delete this portfolio item? This cannot be undone.')) return;
-  const { error } = await sb.from('portfolio_items').delete().eq('id', id);
-  if (error) { notify('Error: ' + error.message, 'error'); return; }
-  notify('🗑 Item deleted.', 'info');
-  await loadPortfolioItems();
-  const list = document.getElementById('portfolioItemsList');
-  if (list) list.innerHTML = portfolioItems.length === 0
-    ? '<p style="color:rgba(255,255,255,.3);text-align:center;padding:60px;grid-column:1/-1">No portfolio items yet.</p>'
-    : portfolioItems.map(p => portfolioItemCardHTML(p)).join('');
+// --- ALL PRODUCTS ---
+function renderProducts() {
+  document.getElementById('tabContent').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px">
+        <div><h2 class="cinzel"><span class="gold-text">🧵 All Products</span></h2><p style="font-size:12px;opacity:0.5">${products.length} products total</p></div>
+        <button class="btn-gold" onclick="showTab('add')">+ Add Product</button>
+    </div>
+    <div style="margin-bottom:15px"><input type="text" id="pSearch" class="input-field" placeholder="Search by name, brand, type..." oninput="filterProducts(this.value)" style="max-width:350px"></div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>#No</th><th>Image</th><th>Name</th><th>Category</th><th>Type</th><th>Brand</th><th>Price</th><th>New?</th><th>Stock</th><th>Actions</th></tr></thead>
+            <tbody id="productBody"></tbody>
+        </table>
+    </div>`;
+  filterProducts('');
 }
 
-// ── ADMIN PORTFOLIO ITEM SLIDER ──
-function movePitemSlide(cardId, valOrDir, isAbsolute) {
-  const el = document.getElementById(cardId);
-  if (!el) return;
-  const track = el.querySelector('.pitem-track');
-  const count = track.children.length;
-  if (isAbsolute) {
-    pitemSlideIdx[cardId] = valOrDir;
-  } else {
-    pitemSlideIdx[cardId] = ((pitemSlideIdx[cardId] || 0) + valOrDir + count) % count;
-  }
-  const i = pitemSlideIdx[cardId];
-  track.style.transform = `translateX(-${i * 100}%)`;
-  el.querySelectorAll('.pitem-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+function filterProducts(q) {
+  const list = products.filter(p => (p.name+p.brand+p.subcategory).toLowerCase().includes(q.toLowerCase()));
+  const body = document.getElementById('productBody');
+  body.innerHTML = list.map(p => `
+    <tr>
+        <td><span style="background:rgba(212,175,55,0.1);color:#D4AF37;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;border:1px solid rgba(212,175,55,0.3)">${p.product_no}</span></td>
+        <td><div style="width:44px;height:44px;border-radius:6px;overflow:hidden;background:#3b0764;display:flex;align-items:center;justify-content:center">${p.image_url ? `<img src="${p.image_url}" style="width:100%;height:100%;object-fit:cover">` : '🧵'}</div></td>
+        <td style="font-weight:600">${p.name}</td>
+        <td>${p.category}</td>
+        <td style="opacity:0.6">${p.subcategory}</td>
+        <td class="cinzel" style="font-size:11px">${p.brand}</td>
+        <td class="cinzel" style="font-weight:700">₹${p.price}</td>
+        <td>${p.is_new ? '✅' : '—'}</td>
+        <td class="${p.stock < 10 ? 'stock-low' : ''}">${p.stock}</td>
+        <td>
+            <div style="display:flex;gap:8px">
+                <button class="btn-edit" onclick="startEdit('${p.id}')">✎</button>
+                <button class="btn-danger" onclick="confirmDeleteProduct('${p.id}')">🗑</button>
+            </div>
+        </td>
+    </tr>`).join('');
 }
 
-// ── NOTIFY ──
-function notify(msg, type = 'info') {
-  const cols = { success: ['#14532d', '#86efac', '#22c55e'], error: ['#450a0a', '#f87171', '#ef4444'], info: ['#1c1a36', '#a78bfa', '#7c3aed'] };
-  const [bg, text, border] = cols[type] || cols.info;
-  const el = document.createElement('div');
-  el.className = 'notify';
-  el.style.cssText += `background:${bg};color:${text};border-color:${border}40;transition:opacity .4s`;
-  const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
-  el.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
-  document.body.appendChild(el);
-  setTimeout(() => { el.style.opacity = '0'; }, 3200);
-  setTimeout(() => el.remove(), 3600);
+// --- FORM SECTION ---
+function renderForm() {
+  const isEdit = !!editingId;
+  const p = isEdit ? products.find(x => x.id === editingId) : { name:'', category:'Shirting', subcategory:'Linen', brand:'Libas', price:'', stock:'', description:'', is_new:false };
+  
+  document.getElementById('tabContent').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px">
+        <h2 class="cinzel"><span class="gold-text">${isEdit?'✎ Edit':'➕ Add'} Product</span></h2>
+        <button class="btn-outline" onclick="showTab('products')">← Back to Products</button>
+    </div>
+    <div class="card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div style="grid-column:1/-1"><label class="label">Product Name *</label><input id="fName" class="input-field" value="${p.name}" placeholder="e.g. Royal Linen Shirting"></div>
+            <div><label class="label">Category</label><select id="fCat" class="select-field" onchange="updateSubs(this.value)">${CATEGORIES.map(c=>`<option ${p.category===c?'selected':''}>${c}</option>`).join('')}</select></div>
+            <div><label class="label">Subcategory</label><select id="fSub" class="select-field"></select></div>
+            <div><label class="label">Brand</label><input id="fBrand" class="input-field" value="${p.brand}"></div>
+            <div>
+                <label class="label">Price per Meter (₹)</label>
+                <input id="fPrice" type="number" class="input-field" value="${p.price}" oninput="calcPreviews(this.value)">
+            </div>
+            <div style="grid-column:1/-1">
+                <div id="priceGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"></div>
+            </div>
+            <div><label class="label">Stock Quantity</label><input id="fStock" type="number" class="input-field" value="${p.stock}"></div>
+            <div style="grid-column:1/-1">
+                <label class="label">Images (Multiple)</label>
+                <div class="upload-zone" onclick="document.getElementById('imgInput').click()">
+                    <div id="upInfo">📷 Click or Drag to Upload</div>
+                    <div id="upProg" style="display:none"><div class="progress-bar"><div id="upFill" class="progress-fill"></div></div></div>
+                </div>
+                <input type="file" id="imgInput" multiple hidden onchange="uploadFiles(this.files)">
+                <div id="imgPreviews" style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap"></div>
+            </div>
+            <div style="grid-column:1/-1"><label class="label">Description</label><textarea id="fDesc" class="input-field" style="height:100px">${p.description}</textarea></div>
+            <div style="grid-column:1/-1">
+                <label class="label">Select Available Sizes</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">${ALL_SIZES.map(s => `<button class="chip ${selectedSizes.includes(s)?'selected':''}" onclick="toggleSize(this, '${s}')">${s}</button>`).join('')}</div>
+            </div>
+            <div style="grid-column:1/-1;display:flex;align-items:center;gap:10px">
+                <input type="checkbox" id="fNew" ${p.is_new?'checked':''} style="width:18px;height:18px;accent-color:#7C3AED">
+                <label class="label" style="margin:0">Mark as New Arrival</label>
+            </div>
+        </div>
+        <div style="margin-top:30px;display:flex;gap:12px">
+            <button class="btn-gold" id="saveBtn" onclick="saveProduct()" style="min-width:150px">${isEdit?'Update':'Save'} Product</button>
+            <button class="btn-outline" onclick="showTab('products')">Cancel</button>
+        </div>
+    </div>`;
+  updateSubs(p.category, p.subcategory);
+  calcPreviews(p.price);
+  if(isEdit) { _prodImgUrls = p.image_urls || [p.image_url]; renderImgPreviews(); }
 }
 
-// ── INIT ──
+function updateSubs(cat, currentSub = '') {
+  const el = document.getElementById('fSub');
+  el.innerHTML = (SUBCATS[cat] || []).map(s => `<option ${s===currentSub?'selected':''}>${s}</option>`).join('');
+}
+
+function calcPreviews(val) {
+    const grid = document.getElementById('priceGrid');
+    if(!val) return grid.innerHTML = '';
+    grid.innerHTML = ALL_SIZES.map(s => {
+        const m = parseFloat(s);
+        return `<div style="background:rgba(212,175,55,0.05);padding:10px;border-radius:8px;text-align:center;border:1px solid rgba(212,175,55,0.2)">
+            <div style="font-size:10px;opacity:0.5">${s}</div>
+            <div class="cinzel" style="color:#E8CC6A;font-weight:700">₹${(val*m).toFixed(0)}</div>
+        </div>`;
+    }).join('');
+}
+
+async function uploadFiles(files) {
+    const info = document.getElementById('upInfo');
+    const prog = document.getElementById('upProg');
+    const fill = document.getElementById('upFill');
+    info.style.display = 'none'; prog.style.display = 'block';
+    
+    for(let i=0; i<files.length; i++) {
+        const f = files[i];
+        const path = `products/${Date.now()}_${f.name}`;
+        await sb.storage.from(STORAGE_BUCKET).upload(path, f);
+        const { data } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+        _prodImgUrls.push(data.publicUrl);
+        fill.style.width = `${((i+1)/files.length)*100}%`;
+    }
+    prog.style.display = 'none'; info.style.display = 'block';
+    renderImgPreviews();
+}
+
+function renderImgPreviews() {
+    const div = document.getElementById('imgPreviews');
+    div.innerHTML = _prodImgUrls.map((url, i) => `
+        <div style="position:relative;width:80px;height:80px;border-radius:8px;overflow:hidden;border:2px solid ${i===0?'#D4AF37':'rgba(255,255,255,0.1)'}">
+            <img src="${url}" style="width:100%;height:100%;object-fit:cover">
+            ${i===0 ? '<span style="position:absolute;bottom:0;width:100%;background:#D4AF37;color:black;font-size:8px;text-align:center;font-weight:700">MAIN</span>' : ''}
+        </div>
+    `).join('');
+}
+
+// --- ORDER SECTION ---
+async function renderOrders() {
+  await loadOrders();
+  const revenue = orders.filter(o => o.payment_status === 'Paid').reduce((s,o) => s + Number(o.total_amount||0), 0);
+  
+  document.getElementById('tabContent').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px">
+        <h2 class="cinzel"><span class="gold-text">📦 Order Details</span></h2>
+        <button class="btn-outline" onclick="renderOrders()">Refresh List</button>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:25px">
+        <div class="stat-card" style="cursor:pointer" onclick="setOrderFilter('','')"><div><div class="cinzel" style="font-size:22px">${orders.length}</div><div style="font-size:11px;opacity:0.5">Total Orders</div></div></div>
+        <div class="stat-card" style="cursor:pointer" onclick="setOrderFilter('','Pending')"><div class="stat-icon" style="background:#fbbf2422;color:#fbbf24">⏳</div><div><div class="cinzel" style="font-size:22px">${orders.filter(o=>o.payment_status==='Pending').length}</div><div style="font-size:11px;opacity:0.5">Pending</div></div></div>
+        <div class="stat-card" style="cursor:pointer" onclick="setOrderFilter('','Paid')"><div class="stat-icon" style="background:#22c55e22;color:#22c55e">✅</div><div><div class="cinzel" style="font-size:22px">${orders.filter(o=>o.payment_status==='Paid').length}</div><div style="font-size:11px;opacity:0.5">Paid</div></div></div>
+        <div class="stat-card"><div><div class="cinzel" style="font-size:20px;color:#C9A020">₹${revenue.toFixed(0)}</div><div style="font-size:11px;opacity:0.5">Total Revenue</div></div></div>
+    </div>
+
+    <div class="card" style="padding:15px">
+        <div style="display:flex;gap:10px;margin-bottom:15px;align-items:center">
+            <input type="text" class="input-field" placeholder="Search by name, phone, city..." oninput="setOrderFilter(this.value, _ordersPayFilter)" style="max-width:300px">
+            <select class="select-field" style="width:150px" onchange="setOrderFilter(_ordersFilter, this.value)">
+                <option value="">All Payments</option><option value="Pending">Pending</option><option value="Paid">Paid</option><option value="Failed">Failed</option>
+            </select>
+            ${_ordersFilter || _ordersPayFilter ? `<button onclick="setOrderFilter('','')" style="background:none;border:none;color:#f87171;cursor:pointer;font-size:12px">✕ Clear</button>` : ''}
+        </div>
+        <div class="table-wrap" style="max-height:60vh;overflow-y:auto">
+            <table>
+                <thead><tr><th>Receiver</th><th>Phone</th><th>Location</th><th>Address</th><th>Items</th><th>Amount</th><th>Payment</th><th>Status</th><th>Date</th><th>Delete</th></tr></thead>
+                <tbody id="orderTableBody"></tbody>
+            </table>
+        </div>
+    </div>`;
+  filterOrders();
+}
+
+function setOrderFilter(q, p) { _ordersFilter = q; _ordersPayFilter = p; filterOrders(); }
+
+function filterOrders() {
+    const list = orders.filter(o => 
+        (o.receiver_name+o.phone+o.city).toLowerCase().includes(_ordersFilter.toLowerCase()) &&
+        (_ordersPayFilter === '' || o.payment_status === _ordersPayFilter)
+    );
+    const body = document.getElementById('orderTableBody');
+    body.innerHTML = list.map(o => `
+        <tr id="orow-${o.id}">
+            <td style="font-weight:700">${o.receiver_name}</td>
+            <td><a href="tel:${o.phone}" style="color:#a78bfa;text-decoration:none">${o.phone}</a></td>
+            <td style="font-size:11px;opacity:0.6">${o.city}, ${o.state}</td>
+            <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${o.full_address}">${o.full_address}</td>
+            <td><button class="btn-outline" onclick="viewOrderItems('${o.id}')">🛒 ${JSON.parse(o.cart_items||'[]').length} items</button></td>
+            <td class="cinzel" style="color:#C9A020;font-weight:700">₹${o.total_amount}</td>
+            <td><span style="color:${payColor(o.payment_status)};font-size:10px;font-weight:700;text-transform:uppercase">${o.payment_status}</span></td>
+            <td>
+                <select class="select-field" style="padding:4px;width:auto;font-size:11px" onchange="updateOrderStatus('${o.id}', this.value)">
+                    ${['New','Processing','Shipped','Delivered','Cancelled'].map(s => `<option ${o.order_status===s?'selected':''}>${s}</option>`).join('')}
+                </select>
+            </td>
+            <td style="font-size:10px;opacity:0.5">${new Date(o.created_at).toLocaleDateString()}</td>
+            <td><button class="btn-danger" style="padding:5px 8px" onclick="confirmDeleteOrder('${o.id}')">🗑</button></td>
+        </tr>
+    `).join('');
+}
+
+function viewOrderItems(id) {
+    const o = orders.find(x => x.id === id);
+    const items = JSON.parse(o.cart_items || '[]');
+    const body = document.getElementById('modalBody');
+    body.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:30px;background:rgba(255,255,255,0.03);padding:20px;border-radius:12px;border:1px solid rgba(212,175,55,0.1)">
+            <div><p class="label">Customer</p><p>${o.receiver_name}</p><p>${o.phone}</p></div>
+            <div><p class="label">Shipping Address</p><p>${o.full_address}</p><p>${o.city}, ${o.state} - ${o.pin_code}</p></div>
+        </div>
+        <h4 class="cinzel" style="color:#E8CC6A;font-size:12px;margin-bottom:15px">ORDER CONTENTS</h4>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Product</th><th>Size</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr></thead>
+                <tbody>
+                    ${items.map(it => `<tr>
+                        <td><div style="font-size:10px;color:#D4AF37">${it.product_no}</div>${it.name}</td>
+                        <td>${it.selectedSize}</td>
+                        <td>${it.qty}</td>
+                        <td>₹${it.price}</td>
+                        <td class="cinzel">₹${(it.qty*it.price).toFixed(0)}</td>
+                    </tr>`).join('')}
+                </tbody>
+                <tfoot><tr><td colspan="4" style="text-align:right" class="cinzel">Total Amount</td><td class="cinzel" style="color:#C9A020;font-size:18px">₹${o.total_amount}</td></tr></tfoot>
+            </table>
+        </div>
+    `;
+    document.getElementById('orderModal').classList.add('open');
+}
+
+// --- BANNER IMAGES ---
+function renderBanners() {
+    document.getElementById('tabContent').innerHTML = `
+        <h2 class="cinzel" style="margin-bottom:25px"><span class="gold-text">🖼️ Banner Images</span></h2>
+        <div class="card" style="margin-bottom:25px">
+            <h3 class="cinzel" style="font-size:13px;color:#E8CC6A;margin-bottom:15px">➕ ADD NEW BANNER</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px">
+                <input id="bTitle" class="input-field" placeholder="Banner Title (optional)">
+                <input id="bSub" class="input-field" placeholder="Subtitle (optional)">
+            </div>
+            <div style="display:grid;grid-template-columns:100px 1fr;gap:15px;align-items:center;margin-bottom:15px">
+                <input id="bOrder" type="number" class="input-field" value="${banners.length}">
+                <div class="upload-zone" style="padding:15px" onclick="document.getElementById('bInput').click()">Click to Upload Banner Image</div>
+            </div>
+            <input type="file" id="bInput" hidden onchange="uploadBannerFile(this.files[0])">
+            <div id="bPreview"></div>
+            <button class="btn-gold" id="saveBBtn" style="margin-top:15px" onclick="saveBanner()">✅ Save Banner</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:20px">
+            ${banners.map(b => `
+                <div class="card" style="padding:0;overflow:hidden">
+                    <div style="height:180px;position:relative">
+                        <img src="${b.image_url}" style="width:100%;height:100%;object-fit:cover">
+                        <span style="position:absolute;top:10px;left:10px;background:${b.is_active?'#059669':'#4b5563'};font-size:9px;padding:3px 8px;border-radius:4px;font-weight:700">${b.is_active?'LIVE':'HIDDEN'}</span>
+                        <span style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);font-size:10px;padding:3px 8px;border-radius:4px">Order: ${b.sort_order}</span>
+                    </div>
+                    <div style="padding:15px">
+                        <div style="font-weight:700">${b.title || 'Untitled'}</div>
+                        <div style="font-size:12px;opacity:0.5;margin-bottom:15px">${b.subtitle || ''}</div>
+                        <div style="display:flex;gap:10px">
+                            <button class="btn-outline" style="flex:1" onclick="toggleBanner('${b.id}', ${b.is_active})">${b.is_active?'Hide':'Show'}</button>
+                            <button class="btn-danger" style="flex:1" onclick="confirmDeleteBanner('${b.id}')">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>`;
+}
+
+// --- PASSWORD ---
+async function renderThaanPwd() {
+  const { data } = await sb.from('app_settings').select('value').eq('key', 'thaan_password').single();
+  document.getElementById('tabContent').innerHTML = `
+    <h2 class="cinzel" style="margin-bottom:25px"><span class="gold-text">🔑 Wholesale Password</span></h2>
+    <div class="card" style="max-width:500px">
+        <p id="pwdStatus" style="font-size:12px;color:#22c55e;margin-bottom:15px">Password loaded ✅</p>
+        <label class="label">Current Password</label>
+        <div style="display:flex;gap:10px;margin-bottom:25px">
+            <input id="currP" class="input-field" type="password" value="${data?.value || ''}" readonly style="filter:blur(6px)">
+            <button class="btn-outline" onclick="togglePwdVisibility()">SHOW</button>
+        </div>
+        <div style="display:grid;gap:15px">
+            <div><label class="label">New Password</label><input id="nP" class="input-field" placeholder="Min 4 chars"></div>
+            <div><label class="label">Confirm New Password</label><input id="cP" class="input-field" placeholder="Must match"></div>
+            <button class="btn-gold" style="width:100%" onclick="updatePwd()">Update Password</button>
+        </div>
+        <p style="font-size:11px;opacity:0.4;margin-top:20px;text-align:center">Password protected</p>
+    </div>`;
+}
+
+// --- CRUD & LOGIC ---
+
+async function saveProduct() {
+    const btn = document.getElementById('saveBtn');
+    btn.disabled = true; btn.innerHTML = '<span class="spinner-sm"></span> Saving...';
+    
+    const payload = {
+        name: document.getElementById('fName').value,
+        category: document.getElementById('fCat').value,
+        subcategory: document.getElementById('fSub').value,
+        brand: document.getElementById('fBrand').value,
+        price: parseFloat(document.getElementById('fPrice').value),
+        stock: parseInt(document.getElementById('fStock').value),
+        description: document.getElementById('fDesc').value,
+        is_new: document.getElementById('fNew').checked,
+        image_url: _prodImgUrls[0] || '',
+        image_urls: _prodImgUrls,
+        sizes: selectedSizes
+    };
+
+    try {
+        if(!editingId) {
+            const { data: last } = await sb.from('products').select('product_no').order('created_at',{ascending:false}).limit(1);
+            const next = last?.[0] ? parseInt(last[0].product_no.split('-')[1]) + 1 : 1;
+            payload.product_no = 'LIB-' + String(next).padStart(4,'0');
+            await sb.from('products').insert([payload]);
+        } else {
+            await sb.from('products').update(payload).eq('id', editingId);
+        }
+        notify("Success", "success"); showTab('products'); loadProducts();
+    } catch(e) { notify(e.message, "error"); }
+    finally { btn.disabled = false; btn.textContent = 'Save Product'; }
+}
+
+async function updateOrderStatus(id, val) {
+    await sb.from('orders').update({ order_status: val }).eq('id', id);
+    notify("Status updated", "success");
+    loadOrders();
+}
+
+async function updatePwd() {
+    const n = document.getElementById('nP').value;
+    const c = document.getElementById('cP').value;
+    if(n.length < 4) return notify("Min 4 characters", "error");
+    if(n !== c) return notify("Passwords mismatch", "error");
+    
+    await sb.from('app_settings').upsert({ key:'thaan_password', value:n }, { onConflict:'key' });
+    notify("Password updated", "success");
+    renderThaanPwd();
+}
+
+// --- UTILS ---
+function notify(m, t) {
+    const n = document.createElement('div');
+    n.className = 'notify';
+    n.style.background = t === 'success' ? '#14532d' : '#450a0a';
+    n.style.borderColor = t === 'success' ? '#22c55e' : '#f87171';
+    n.innerHTML = `<span>${t==='success'?'✅':'❌'}</span>${m}`;
+    document.body.appendChild(n);
+    setTimeout(() => n.remove(), 3000);
+}
+function payColor(status) {
+    switch(status) {
+        case 'Paid': return '#22c55e';    // Green
+        case 'Pending': return '#fbbf24'; // Yellow
+        case 'Failed': return '#f87171';  // Red
+        default: return '#e2e8f0';        // Default white/gray
+    }
+}   
+
+function showConfirm({title, msg, onOk}) {
+    document.getElementById('confirmTitle').textContent = title;
+    document.getElementById('confirmMsg').textContent = msg;
+    const btn = document.getElementById('confirmOkBtn');
+    btn.onclick = () => { closeConfirm(); onOk(); };
+    document.getElementById('confirmModal').classList.add('open');
+}
+function closeConfirm() { document.getElementById('confirmModal').classList.remove('open'); }
+function closeModal() { document.getElementById('orderModal').classList.remove('open'); }
+function toggleSize(btn, s) { btn.classList.toggle('selected'); if(selectedSizes.includes(s)) selectedSizes = selectedSizes.filter(x=>x!==s); else selectedSizes.push(s); }
+function togglePwdVisibility() { const el = document.getElementById('currP'); el.type = el.type === 'password' ? 'text' : 'password'; el.style.filter = el.type === 'text' ? 'none' : 'blur(6px)'; }
+function startEdit(id) { editingId = id; const p = products.find(x=>x.id==id); selectedSizes = p.sizes || []; _prodImgUrls = p.image_urls || []; renderForm(); }
+function confirmDeleteProduct(id) { showConfirm({ title:'Delete Product?', msg:'This action cannot be undone.', onOk: async () => { await sb.from('products').delete().eq('id', id); notify("Deleted","success"); await loadProducts(); renderProducts(); } }); }
+function confirmDeleteOrder(id) { showConfirm({ title:'Delete Order?', msg:'Permanent removal from database.', onOk: async () => { await sb.from('orders').delete().eq('id', id); notify("Deleted","success"); await loadOrders(); renderOrders(); } }); }
+
+// --- LEGACY PLACEHOLDERS ---
+function renderSetup() { document.getElementById('tabContent').innerHTML = '<div class="card"><h3>Database Setup</h3><p>Ensure tables products, orders, banner_images, and app_settings exist in Supabase.</p></div>'; }
+async function uploadBannerFile(f) { const path = `banners/${Date.now()}_${f.name}`; await sb.storage.from(STORAGE_BUCKET).upload(path, f); const { data } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path); window._bUrl = data.publicUrl; document.getElementById('bPreview').innerHTML = `<img src="${window._bUrl}" style="height:50px;margin-top:10px">`; }
+async function saveBanner() { await sb.from('banner_images').insert([{ title: document.getElementById('bTitle').value, subtitle: document.getElementById('bSub').value, sort_order: parseInt(document.getElementById('bOrder').value), image_url: window._bUrl, is_active: true }]); loadBanners(); renderBanners(); }
+async function toggleBanner(id, curr) { await sb.from('banner_images').update({ is_active: !curr }).eq('id', id); loadBanners(); renderBanners(); }
+async function confirmDeleteBanner(id) { await sb.from('banner_images').delete().eq('id', id); loadBanners(); renderBanners(); }
+
 init();
 </script>
 </body>
 </html>
+<!-- https://pkxdhwvfnnzmjxjtostm.supabase.co
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBreGRod3Zmbm56bWp4anRvc3RtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwOTA5MTcsImV4cCI6MjA4NzY2NjkxN30.nKk0BVTHCVPhVGpBdL5RPCHl67DyQiBRZVclnjtGtvo -->
